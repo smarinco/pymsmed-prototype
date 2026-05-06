@@ -14,6 +14,8 @@ import type {
   SeguimientoCaracterizacion,
   ActividadColectiva,
   Canalizacion,
+  CaracterizacionAmbiental,
+  SeguimientoAmbiental,
 } from '@/shared/types/domain'
 
 const now = '2026-05-04T10:00:00'
@@ -457,6 +459,65 @@ export const canalizacionesSeed: Canalizacion[] = [
     asignadoA: 'Dr. Fernando Uribe', fechaCita: '2026-04-25',
     observacionesSeguimiento: 'Valoración completada. Plan de manejo establecido. Se cierra seguimiento.',
     fechaCierre: '2026-05-01',
+    ...audit,
+  },
+]
+
+// --- Caracterizaciones Ambientales ---
+export const caracterizacionesAmbientalesSeed: CaracterizacionAmbiental[] = [
+  {
+    id: 'ca1', codigo: 'SA-001', ubicacion: 'Quebrada La Herrera - Tramo zona 1', comuna: '1 - Popular', barrio: 'Santo Domingo',
+    tipoZona: 'residencial', profesional: 'María López', fecha: '2026-04-18', estado: 'completada',
+    secciones: [
+      { dimension: 'agua_saneamiento', completada: true, respuestas: { fuenteAgua: 'acueducto', aguaPotable: true, alcantarillado: true, vertimientosVisibles: true, aguasEstancadas: false }, nivelRiesgo: 'medio', observaciones: 'Se observan vertimientos de aguas grises hacia la quebrada.' },
+      { dimension: 'residuos_solidos', completada: true, respuestas: { recoleccionRegular: true, puntosAcumulacion: true, reciclaje: false, residuosPeligrosos: false }, nivelRiesgo: 'medio', observaciones: 'Acumulación de residuos cerca de la quebrada.' },
+      { dimension: 'vectores_plagas', completada: true, respuestas: { presenciaRoedores: true, presenciaMosquitos: true, criaderosMosquitos: true, animalesCallejeros: false }, nivelRiesgo: 'alto', observaciones: 'Criaderos de mosquitos en aguas estancadas. Alto riesgo de dengue.' },
+      { dimension: 'calidad_aire', completada: true, respuestas: { fuentesContaminacion: false, quemaResiduos: false, polvoExcesivo: false, oloresDesagradables: true }, nivelRiesgo: 'bajo', observaciones: 'Olores por vertimientos pero sin fuentes de contaminación del aire.' },
+      { dimension: 'suelo_vivienda', completada: true, respuestas: { zonaInundable: true, terrenoInestable: false, viviendasEnRiesgo: true, infraestructuraAdecuada: false }, nivelRiesgo: 'alto', observaciones: 'Viviendas en zona de retiro de quebrada, riesgo de inundación.' },
+    ],
+    riesgoGeneral: 'alto',
+    recomendaciones: 'Se requiere intervención prioritaria: control de vectores, reubicación de vertimientos y evaluación de viviendas en zona de retiro.',
+    ...audit,
+  },
+  {
+    id: 'ca2', codigo: 'SA-002', ubicacion: 'Sector comercial Cll 44 con Cra 65', comuna: '13 - San Javier', barrio: 'San Javier',
+    tipoZona: 'comercial', profesional: 'Jorge Restrepo', fecha: '2026-04-25', estado: 'completada',
+    secciones: [
+      { dimension: 'agua_saneamiento', completada: true, respuestas: { fuenteAgua: 'acueducto', aguaPotable: true, alcantarillado: true, vertimientosVisibles: false, aguasEstancadas: false }, nivelRiesgo: 'sin_riesgo', observaciones: 'Infraestructura adecuada.' },
+      { dimension: 'residuos_solidos', completada: true, respuestas: { recoleccionRegular: true, puntosAcumulacion: true, reciclaje: false, residuosPeligrosos: false }, nivelRiesgo: 'bajo', observaciones: 'Algunos puntos de acumulación pero con recolección regular.' },
+      { dimension: 'vectores_plagas', completada: true, respuestas: { presenciaRoedores: false, presenciaMosquitos: false, criaderosMosquitos: false, animalesCallejeros: true }, nivelRiesgo: 'bajo', observaciones: 'Presencia de perros callejeros, sin riesgo sanitario mayor.' },
+      { dimension: 'calidad_aire', completada: true, respuestas: { fuentesContaminacion: true, quemaResiduos: false, polvoExcesivo: false, oloresDesagradables: false }, nivelRiesgo: 'bajo', observaciones: 'Emisiones vehiculares normales para zona comercial.' },
+      { dimension: 'suelo_vivienda', completada: true, respuestas: { zonaInundable: false, terrenoInestable: false, viviendasEnRiesgo: false, infraestructuraAdecuada: true }, nivelRiesgo: 'sin_riesgo', observaciones: 'Zona estable.' },
+    ],
+    riesgoGeneral: 'bajo',
+    recomendaciones: 'Zona con condiciones ambientales aceptables. Mantener vigilancia de residuos sólidos.',
+    ...audit,
+  },
+  {
+    id: 'ca3', codigo: 'SA-003', ubicacion: 'Asentamiento informal Loma de los González', comuna: '8 - Villa Hermosa', barrio: 'Villa Hermosa',
+    tipoZona: 'residencial', profesional: 'María López', fecha: '2026-05-02', estado: 'en_progreso',
+    secciones: [
+      { dimension: 'agua_saneamiento', completada: true, respuestas: { fuenteAgua: 'pila_publica', aguaPotable: false, alcantarillado: false, vertimientosVisibles: true, aguasEstancadas: true }, nivelRiesgo: 'critico', observaciones: 'Sin acueducto formal. Agua de pila pública no potabilizada. Sin alcantarillado.' },
+      { dimension: 'residuos_solidos', completada: true, respuestas: { recoleccionRegular: false, puntosAcumulacion: true, reciclaje: false, residuosPeligrosos: false }, nivelRiesgo: 'alto', observaciones: 'No llega vehículo recolector. Residuos a cielo abierto.' },
+      { dimension: 'vectores_plagas', completada: false, respuestas: {}, nivelRiesgo: 'sin_riesgo', observaciones: '' },
+      { dimension: 'calidad_aire', completada: false, respuestas: {}, nivelRiesgo: 'sin_riesgo', observaciones: '' },
+      { dimension: 'suelo_vivienda', completada: false, respuestas: {}, nivelRiesgo: 'sin_riesgo', observaciones: '' },
+    ],
+    riesgoGeneral: 'critico',
+    recomendaciones: '',
+    ...audit,
+  },
+]
+
+// --- Seguimientos Ambientales ---
+export const seguimientosAmbientalesSeed: SeguimientoAmbiental[] = [
+  {
+    id: 'sa_seg1', caracterizacionId: 'ca1', fecha: '2026-05-04', profesional: 'María López',
+    observaciones: 'Se realizó jornada de fumigación con Secretaría de Medio Ambiente. Se entregaron toldillos a familias cercanas a la quebrada.',
+    cambiosRiesgo: [
+      { dimension: 'vectores_plagas', nuevoNivel: 'medio', nota: 'Fumigación realizada. Se requiere seguimiento en 15 días.' },
+    ],
+    nuevoRiesgoGeneral: 'medio',
     ...audit,
   },
 ]

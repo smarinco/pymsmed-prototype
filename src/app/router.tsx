@@ -31,6 +31,9 @@ import { ActividadDetailPage } from '@/modules/actividades/pages/ActividadDetail
 import { ActividadCreatePage } from '@/modules/actividades/pages/ActividadCreatePage'
 import { CanalizacionesListPage } from '@/modules/canalizaciones/pages/CanalizacionesListPage'
 import { CanalizacionDetailPage } from '@/modules/canalizaciones/pages/CanalizacionDetailPage'
+import { SaludAmbientalListPage } from '@/modules/saludAmbiental/pages/SaludAmbientalListPage'
+import { SaludAmbientalDetailPage } from '@/modules/saludAmbiental/pages/SaludAmbientalDetailPage'
+import { SaludAmbientalCreatePage } from '@/modules/saludAmbiental/pages/SaludAmbientalCreatePage'
 import { ReportesPage } from '@/modules/reportes/pages/ReportesPage'
 import { PlaceholderPage } from '@/shared/components/PlaceholderPage'
 
@@ -85,6 +88,11 @@ export function AppRouter() {
         {/* Participantes y Atenciones */}
         <Route path="/visitas/:visitaId/agregar-participante" element={<AgregarParticipantePage />} />
         <Route path="/visitas/:visitaId/participantes/:personaId/atencion" element={<AtencionPage />} />
+
+        {/* Salud Ambiental */}
+        <Route path="/salud-ambiental" element={<SaludAmbientalListPage />} />
+        <Route path="/salud-ambiental/nueva" element={<SaludAmbientalCreatePage />} />
+        <Route path="/salud-ambiental/:id" element={<SaludAmbientalDetailPage />} />
 
         {/* Actividades Colectivas */}
         <Route path="/actividades" element={<ActividadesListPage />} />

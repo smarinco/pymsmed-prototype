@@ -368,6 +368,50 @@ export interface Canalizacion extends AuditFields {
 export type TipoSolicitud = 'edicion' | 'inactivacion' | 'reapertura'
 export type EstadoSolicitud = 'pendiente' | 'aprobada' | 'rechazada'
 
+// --- Salud Ambiental ---
+export type EstadoCaracterizacionAmbiental = 'en_progreso' | 'completada'
+export type NivelRiesgoAmbiental = 'sin_riesgo' | 'bajo' | 'medio' | 'alto' | 'critico'
+
+export type DimensionAmbiental =
+  | 'agua_saneamiento'
+  | 'residuos_solidos'
+  | 'vectores_plagas'
+  | 'calidad_aire'
+  | 'suelo_vivienda'
+
+export interface SeccionAmbiental {
+  dimension: DimensionAmbiental
+  completada: boolean
+  respuestas: Record<string, string | boolean | number>
+  nivelRiesgo: NivelRiesgoAmbiental
+  observaciones: string
+}
+
+export interface CaracterizacionAmbiental extends AuditFields {
+  id: string
+  codigo: string
+  ubicacion: string
+  comuna: string
+  barrio: string
+  tipoZona: 'residencial' | 'comercial' | 'industrial' | 'rural' | 'mixta'
+  profesional: string
+  fecha: string
+  estado: EstadoCaracterizacionAmbiental
+  secciones: SeccionAmbiental[]
+  riesgoGeneral: NivelRiesgoAmbiental
+  recomendaciones: string
+}
+
+export interface SeguimientoAmbiental extends AuditFields {
+  id: string
+  caracterizacionId: string
+  fecha: string
+  profesional: string
+  observaciones: string
+  cambiosRiesgo: { dimension: DimensionAmbiental; nuevoNivel: NivelRiesgoAmbiental; nota: string }[]
+  nuevoRiesgoGeneral: NivelRiesgoAmbiental
+}
+
 export interface Solicitud extends AuditFields {
   id: string
   tipo: TipoSolicitud

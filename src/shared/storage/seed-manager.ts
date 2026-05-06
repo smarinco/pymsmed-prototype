@@ -13,6 +13,8 @@ import {
   seguimientosSeed,
   actividadesSeed,
   canalizacionesSeed,
+  caracterizacionesAmbientalesSeed,
+  seguimientosAmbientalesSeed,
 } from '@/shared/mock/seed-data'
 
 const STORAGE_KEYS = {
@@ -30,6 +32,8 @@ const STORAGE_KEYS = {
   seguimientos: 'pyms_seguimientos',
   actividades: 'pyms_actividades_colectivas',
   canalizaciones: 'pyms_canalizaciones',
+  caracterizacionesAmbientales: 'pyms_caracterizaciones_ambientales',
+  seguimientosAmbientales: 'pyms_seguimientos_ambientales',
 } as const
 
 export function seedIfEmpty(): void {
@@ -48,6 +52,8 @@ export function seedIfEmpty(): void {
     [STORAGE_KEYS.seguimientos]: seguimientosSeed,
     [STORAGE_KEYS.actividades]: actividadesSeed,
     [STORAGE_KEYS.canalizaciones]: canalizacionesSeed,
+    [STORAGE_KEYS.caracterizacionesAmbientales]: caracterizacionesAmbientalesSeed,
+    [STORAGE_KEYS.seguimientosAmbientales]: seguimientosAmbientalesSeed,
   }
 
   for (const [key, data] of Object.entries(seeds)) {
@@ -72,6 +78,8 @@ export function resetAllData(): void {
   localStorage.setItem(STORAGE_KEYS.seguimientos, JSON.stringify(seguimientosSeed))
   localStorage.setItem(STORAGE_KEYS.actividades, JSON.stringify(actividadesSeed))
   localStorage.setItem(STORAGE_KEYS.canalizaciones, JSON.stringify(canalizacionesSeed))
+  localStorage.setItem(STORAGE_KEYS.caracterizacionesAmbientales, JSON.stringify(caracterizacionesAmbientalesSeed))
+  localStorage.setItem(STORAGE_KEYS.seguimientosAmbientales, JSON.stringify(seguimientosAmbientalesSeed))
 }
 
 export { STORAGE_KEYS }

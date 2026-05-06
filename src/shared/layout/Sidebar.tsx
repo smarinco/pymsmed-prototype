@@ -14,6 +14,7 @@ import {
   Settings,
   ArrowRightLeft,
   BarChart3,
+  Leaf,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
@@ -35,6 +36,7 @@ const entornoItems = [
 const otherItems = [
   { to: '/visitas', icon: ClipboardList, label: 'Visitas' },
   { to: '/participantes', icon: Users, label: 'Participantes' },
+  { to: '/salud-ambiental', icon: Leaf, label: 'Salud Ambiental' },
   { to: '/actividades', icon: CalendarDays, label: 'Actividades Colectivas' },
   { to: '/canalizaciones', icon: ArrowRightLeft, label: 'Canalizaciones' },
   { to: '/reportes', icon: BarChart3, label: 'Reportes' },
