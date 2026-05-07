@@ -34,6 +34,9 @@ import { CanalizacionDetailPage } from '@/modules/canalizaciones/pages/Canalizac
 import { SaludAmbientalListPage } from '@/modules/saludAmbiental/pages/SaludAmbientalListPage'
 import { SaludAmbientalDetailPage } from '@/modules/saludAmbiental/pages/SaludAmbientalDetailPage'
 import { SaludAmbientalCreatePage } from '@/modules/saludAmbiental/pages/SaludAmbientalCreatePage'
+import { ActivosListPage } from '@/modules/activos/pages/ActivosListPage'
+import { ActivoDetailPage } from '@/modules/activos/pages/ActivoDetailPage'
+import { ActivoCreatePage } from '@/modules/activos/pages/ActivoCreatePage'
 import { ReportesPage } from '@/modules/reportes/pages/ReportesPage'
 import { PlaceholderPage } from '@/shared/components/PlaceholderPage'
 
@@ -93,6 +96,12 @@ export function AppRouter() {
         <Route path="/salud-ambiental" element={<SaludAmbientalListPage />} />
         <Route path="/salud-ambiental/nueva" element={<SaludAmbientalCreatePage />} />
         <Route path="/salud-ambiental/:id" element={<SaludAmbientalDetailPage />} />
+
+        {/* Mapeo de Activos */}
+        <Route path="/mapeo-activos" element={<ActivosListPage />} />
+        <Route path="/mapeo-activos/nuevo" element={<ActivoCreatePage />} />
+        <Route path="/mapeo-activos/:id" element={<ActivoDetailPage />} />
+        <Route path="/mapeo-activos/:id/editar" element={<PlaceholderPage title="Editar Activo" />} />
 
         {/* Actividades Colectivas */}
         <Route path="/actividades" element={<ActividadesListPage />} />

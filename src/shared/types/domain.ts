@@ -412,6 +412,35 @@ export interface SeguimientoAmbiental extends AuditFields {
   nuevoRiesgoGeneral: NivelRiesgoAmbiental
 }
 
+// --- Mapeo de Activos ---
+export type CategoriaActivo =
+  | 'salud'
+  | 'educacion'
+  | 'recreacion'
+  | 'comunitario'
+  | 'institucional'
+  | 'cultural'
+  | 'ambiental'
+  | 'economico'
+
+export type EstadoActivo = 'activo' | 'inactivo' | 'en_verificacion'
+
+export interface ActivoTerritorial extends AuditFields {
+  id: string
+  codigo: string
+  nombre: string
+  categoria: CategoriaActivo
+  comuna: string
+  barrio: string
+  direccion: string
+  descripcion: string
+  responsable: string
+  telefono: string
+  estado: EstadoActivo
+  jornadasAsociadas: string[]
+  observaciones: string
+}
+
 export interface Solicitud extends AuditFields {
   id: string
   tipo: TipoSolicitud

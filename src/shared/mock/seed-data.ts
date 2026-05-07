@@ -16,6 +16,7 @@ import type {
   Canalizacion,
   CaracterizacionAmbiental,
   SeguimientoAmbiental,
+  ActivoTerritorial,
 } from '@/shared/types/domain'
 
 const now = '2026-05-04T10:00:00'
@@ -518,6 +519,55 @@ export const seguimientosAmbientalesSeed: SeguimientoAmbiental[] = [
       { dimension: 'vectores_plagas', nuevoNivel: 'medio', nota: 'Fumigación realizada. Se requiere seguimiento en 15 días.' },
     ],
     nuevoRiesgoGeneral: 'medio',
+    ...audit,
+  },
+]
+
+// --- Activos Territoriales ---
+export const activosSeed: ActivoTerritorial[] = [
+  {
+    id: 'act1', codigo: 'AT-001', nombre: 'Centro de Salud Santo Domingo', categoria: 'salud',
+    comuna: '1 - Popular', barrio: 'Santo Domingo', direccion: 'Cra 33 #106-10',
+    descripcion: 'Centro de atención primaria con servicios de consulta externa, vacunación y laboratorio básico.',
+    responsable: 'Dr. Héctor Jaime Montoya', telefono: '3104567890', estado: 'activo',
+    jornadasAsociadas: ['Jornada de Tamizaje Nutricional', 'Brigada de Vacunación Abril 2026'],
+    observaciones: 'Punto de referencia para actividades de salud en la comuna 1.',
+    ...audit,
+  },
+  {
+    id: 'act2', codigo: 'AT-002', nombre: 'Parque Biblioteca España', categoria: 'cultural',
+    comuna: '1 - Popular', barrio: 'Santo Domingo', direccion: 'Cra 33B #107A-100',
+    descripcion: 'Espacio cultural y educativo con salón de eventos, biblioteca y aulas múltiples.',
+    responsable: 'Coordinadora Luz Adriana Restrepo', telefono: '3209876543', estado: 'activo',
+    jornadasAsociadas: ['Taller de Salud Mental Comunitaria'],
+    observaciones: 'Disponible para actividades grupales previa reserva.',
+    ...audit,
+  },
+  {
+    id: 'act3', codigo: 'AT-003', nombre: 'Cancha La Esperanza', categoria: 'recreacion',
+    comuna: '1 - Popular', barrio: 'Santo Domingo', direccion: 'Cll 107 #32-15',
+    descripcion: 'Cancha múltiple con graderías y zonas verdes adyacentes.',
+    responsable: 'JAC Santo Domingo', telefono: '3157654321', estado: 'activo',
+    jornadasAsociadas: [],
+    observaciones: 'Espacio abierto para brigadas de salud y actividades al aire libre.',
+    ...audit,
+  },
+  {
+    id: 'act4', codigo: 'AT-004', nombre: 'Mercado Campesino San Javier', categoria: 'economico',
+    comuna: '13 - San Javier', barrio: 'San Javier', direccion: 'Cra 98 #45-20',
+    descripcion: 'Mercado semanal con venta de productos agrícolas locales. Punto de encuentro comunitario.',
+    responsable: 'Asociación de Campesinos del Occidente', telefono: '3001234567', estado: 'activo',
+    jornadasAsociadas: ['Encuentro de Seguridad Alimentaria'],
+    observaciones: 'Funciona los sábados de 6am a 1pm.',
+    ...audit,
+  },
+  {
+    id: 'act5', codigo: 'AT-005', nombre: 'Humedal La Herrera', categoria: 'ambiental',
+    comuna: '8 - Villa Hermosa', barrio: 'Villa Hermosa', direccion: 'Cll 55 con Quebrada La Herrera',
+    descripcion: 'Zona de protección ambiental con importancia para el ecosistema local.',
+    responsable: 'Secretaría de Medio Ambiente', telefono: '3148765432', estado: 'en_verificacion',
+    jornadasAsociadas: [],
+    observaciones: 'En proceso de delimitación oficial. Zona vinculada a caracterización ambiental SA-001.',
     ...audit,
   },
 ]
