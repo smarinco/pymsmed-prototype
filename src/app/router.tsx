@@ -37,6 +37,9 @@ import { SaludAmbientalCreatePage } from '@/modules/saludAmbiental/pages/SaludAm
 import { ActivosListPage } from '@/modules/activos/pages/ActivosListPage'
 import { ActivoDetailPage } from '@/modules/activos/pages/ActivoDetailPage'
 import { ActivoCreatePage } from '@/modules/activos/pages/ActivoCreatePage'
+import { SalasAmigasListPage } from '@/modules/salasAmigas/pages/SalasAmigasListPage'
+import { SalaAmigaDetailPage } from '@/modules/salasAmigas/pages/SalaAmigaDetailPage'
+import { SalaAmigaCreatePage } from '@/modules/salasAmigas/pages/SalaAmigaCreatePage'
 import { ReportesPage } from '@/modules/reportes/pages/ReportesPage'
 import { PlaceholderPage } from '@/shared/components/PlaceholderPage'
 
@@ -91,6 +94,11 @@ export function AppRouter() {
         {/* Participantes y Atenciones */}
         <Route path="/visitas/:visitaId/agregar-participante" element={<AgregarParticipantePage />} />
         <Route path="/visitas/:visitaId/participantes/:personaId/atencion" element={<AtencionPage />} />
+
+        {/* Salas Amigas */}
+        <Route path="/salas-amigas" element={<SalasAmigasListPage />} />
+        <Route path="/salas-amigas/nueva" element={<SalaAmigaCreatePage />} />
+        <Route path="/salas-amigas/:id" element={<SalaAmigaDetailPage />} />
 
         {/* Salud Ambiental */}
         <Route path="/salud-ambiental" element={<SaludAmbientalListPage />} />

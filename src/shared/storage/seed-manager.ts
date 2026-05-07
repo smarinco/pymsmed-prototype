@@ -16,6 +16,9 @@ import {
   caracterizacionesAmbientalesSeed,
   seguimientosAmbientalesSeed,
   activosSeed,
+  empresasSalaSeed,
+  socializacionesSeed,
+  seguimientosSalaSeed,
 } from '@/shared/mock/seed-data'
 
 const STORAGE_KEYS = {
@@ -36,6 +39,9 @@ const STORAGE_KEYS = {
   caracterizacionesAmbientales: 'pyms_caracterizaciones_ambientales',
   seguimientosAmbientales: 'pyms_seguimientos_ambientales',
   activos: 'pyms_activos_territoriales',
+  empresasSala: 'pyms_empresas_sala_amiga',
+  socializaciones: 'pyms_socializaciones_norma',
+  seguimientosSala: 'pyms_seguimientos_sala',
 } as const
 
 export function seedIfEmpty(): void {
@@ -57,6 +63,9 @@ export function seedIfEmpty(): void {
     [STORAGE_KEYS.caracterizacionesAmbientales]: caracterizacionesAmbientalesSeed,
     [STORAGE_KEYS.seguimientosAmbientales]: seguimientosAmbientalesSeed,
     [STORAGE_KEYS.activos]: activosSeed,
+    [STORAGE_KEYS.empresasSala]: empresasSalaSeed,
+    [STORAGE_KEYS.socializaciones]: socializacionesSeed,
+    [STORAGE_KEYS.seguimientosSala]: seguimientosSalaSeed,
   }
 
   for (const [key, data] of Object.entries(seeds)) {
@@ -84,6 +93,9 @@ export function resetAllData(): void {
   localStorage.setItem(STORAGE_KEYS.caracterizacionesAmbientales, JSON.stringify(caracterizacionesAmbientalesSeed))
   localStorage.setItem(STORAGE_KEYS.seguimientosAmbientales, JSON.stringify(seguimientosAmbientalesSeed))
   localStorage.setItem(STORAGE_KEYS.activos, JSON.stringify(activosSeed))
+  localStorage.setItem(STORAGE_KEYS.empresasSala, JSON.stringify(empresasSalaSeed))
+  localStorage.setItem(STORAGE_KEYS.socializaciones, JSON.stringify(socializacionesSeed))
+  localStorage.setItem(STORAGE_KEYS.seguimientosSala, JSON.stringify(seguimientosSalaSeed))
 }
 
 export { STORAGE_KEYS }

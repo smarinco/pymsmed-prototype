@@ -17,6 +17,9 @@ import type {
   CaracterizacionAmbiental,
   SeguimientoAmbiental,
   ActivoTerritorial,
+  EmpresaSalaAmiga,
+  SocializacionNorma,
+  SeguimientoSalaAmiga,
 } from '@/shared/types/domain'
 
 const now = '2026-05-04T10:00:00'
@@ -568,6 +571,85 @@ export const activosSeed: ActivoTerritorial[] = [
     responsable: 'Secretaría de Medio Ambiente', telefono: '3148765432', estado: 'en_verificacion',
     jornadasAsociadas: [],
     observaciones: 'En proceso de delimitación oficial. Zona vinculada a caracterización ambiental SA-001.',
+    ...audit,
+  },
+]
+
+// --- Salas Amigas ---
+export const empresasSalaSeed: EmpresaSalaAmiga[] = [
+  {
+    id: 'sa1', codigo: 'SAL-001', nombreEmpresa: 'Confecciones El Progreso S.A.S.', nit: '900.456.789-1',
+    sectorEconomico: 'Industria textil', comuna: '13 - San Javier', barrio: 'San Javier', direccion: 'Cll 45 #97-20',
+    contactoNombre: 'Sandra Milena Torres', contactoCargo: 'Jefe de Talento Humano', contactoTelefono: '3001234567',
+    numTrabajadores: 85, numMujeresEdadFertil: 52, estado: 'certificada', tieneSalaAmiga: true,
+    observaciones: 'Sala amiga implementada desde 2025. Cumple requisitos de la norma.',
+    ...audit,
+  },
+  {
+    id: 'sa2', codigo: 'SAL-002', nombreEmpresa: 'Almacenes La 65 Ltda.', nit: '800.123.456-7',
+    sectorEconomico: 'Comercio', comuna: '11 - Laureles-Estadio', barrio: 'Laureles', direccion: 'Cra 65 #48-30',
+    contactoNombre: 'Carlos Andrés Mejía', contactoCargo: 'Administrador', contactoTelefono: '3209876543',
+    numTrabajadores: 45, numMujeresEdadFertil: 28, estado: 'socializada', tieneSalaAmiga: false,
+    observaciones: 'Socialización de norma realizada. Pendiente implementación.',
+    ...audit,
+  },
+  {
+    id: 'sa3', codigo: 'SAL-003', nombreEmpresa: 'Clínica del Norte', nit: '900.789.012-3',
+    sectorEconomico: 'Salud', comuna: '7 - Robledo', barrio: 'Robledo', direccion: 'Cll 78B #69-240',
+    contactoNombre: 'Diana Patricia Henao', contactoCargo: 'Directora Administrativa', contactoTelefono: '3157654321',
+    numTrabajadores: 320, numMujeresEdadFertil: 180, estado: 'en_implementacion', tieneSalaAmiga: false,
+    observaciones: 'En adecuación de espacio físico. Se espera tener la sala lista en junio 2026.',
+    ...audit,
+  },
+  {
+    id: 'sa4', codigo: 'SAL-004', nombreEmpresa: 'Taller Mecánico Los Paisas', nit: '70.456.789',
+    sectorEconomico: 'Automotriz', comuna: '5 - Castilla', barrio: 'Castilla', direccion: 'Cra 68 #92-15',
+    contactoNombre: 'Jorge Iván Restrepo', contactoCargo: 'Propietario', contactoTelefono: '3004567890',
+    numTrabajadores: 12, numMujeresEdadFertil: 2, estado: 'no_aplica', tieneSalaAmiga: false,
+    observaciones: 'Empresa con menos de 5 mujeres en edad fértil. No aplica según norma.',
+    ...audit,
+  },
+]
+
+export const socializacionesSeed: SocializacionNorma[] = [
+  {
+    id: 'soc1', empresaId: 'sa1', fecha: '2025-06-15', profesional: 'Ana Martínez',
+    temasTratados: ['Ley 1823 de 2017', 'Beneficios de la lactancia materna', 'Requisitos de la sala amiga', 'Plan de implementación'],
+    asistentes: 12, compromisos: 'La empresa se compromete a adecuar un espacio y asignar presupuesto.',
+    observaciones: 'Buena receptividad por parte de directivos.',
+    ...audit,
+  },
+  {
+    id: 'soc2', empresaId: 'sa2', fecha: '2026-04-10', profesional: 'Ana Martínez',
+    temasTratados: ['Ley 1823 de 2017', 'Derechos de las madres lactantes', 'Requisitos mínimos'],
+    asistentes: 8, compromisos: 'Pendiente definir espacio y fecha de implementación.',
+    observaciones: 'El administrador solicitó más información sobre costos.',
+    ...audit,
+  },
+  {
+    id: 'soc3', empresaId: 'sa3', fecha: '2026-03-20', profesional: 'Jorge Restrepo',
+    temasTratados: ['Ley 1823 de 2017', 'Normatividad sector salud', 'Diseño del espacio', 'Dotación requerida'],
+    asistentes: 15, compromisos: 'La clínica asigna presupuesto y espacio en piso 2. Fecha estimada: junio 2026.',
+    observaciones: 'Alta motivación del equipo directivo.',
+    ...audit,
+  },
+]
+
+export const seguimientosSalaSeed: SeguimientoSalaAmiga[] = [
+  {
+    id: 'ss1', empresaId: 'sa1', fecha: '2026-04-05', profesional: 'Ana Martínez',
+    tipoVisita: 'verificacion', cumpleRequisitos: true,
+    hallazgos: 'Sala en buen estado. Refrigerador funcionando. Silla cómoda. Privacidad garantizada. Horario de uso publicado.',
+    recomendaciones: 'Mantener insumos de aseo. Actualizar cartelera informativa.',
+    proximaVisita: '2026-07-05',
+    ...audit,
+  },
+  {
+    id: 'ss2', empresaId: 'sa3', fecha: '2026-05-02', profesional: 'Jorge Restrepo',
+    tipoVisita: 'asesoria', cumpleRequisitos: false,
+    hallazgos: 'Espacio seleccionado pero sin adecuación. Falta refrigerador y lavamanos.',
+    recomendaciones: 'Instalar lavamanos, adquirir refrigerador, señalizar el espacio.',
+    proximaVisita: '2026-06-01',
     ...audit,
   },
 ]

@@ -441,6 +441,51 @@ export interface ActivoTerritorial extends AuditFields {
   observaciones: string
 }
 
+// --- Salas Amigas de la Familia Lactante ---
+export type EstadoEmpresaSala = 'identificada' | 'socializada' | 'en_implementacion' | 'certificada' | 'no_aplica'
+
+export interface EmpresaSalaAmiga extends AuditFields {
+  id: string
+  codigo: string
+  nombreEmpresa: string
+  nit: string
+  sectorEconomico: string
+  comuna: string
+  barrio: string
+  direccion: string
+  contactoNombre: string
+  contactoCargo: string
+  contactoTelefono: string
+  numTrabajadores: number
+  numMujeresEdadFertil: number
+  estado: EstadoEmpresaSala
+  tieneSalaAmiga: boolean
+  observaciones: string
+}
+
+export interface SocializacionNorma extends AuditFields {
+  id: string
+  empresaId: string
+  fecha: string
+  profesional: string
+  temasTratados: string[]
+  asistentes: number
+  compromisos: string
+  observaciones: string
+}
+
+export interface SeguimientoSalaAmiga extends AuditFields {
+  id: string
+  empresaId: string
+  fecha: string
+  profesional: string
+  tipoVisita: 'verificacion' | 'asesoria' | 'seguimiento'
+  cumpleRequisitos: boolean
+  hallazgos: string
+  recomendaciones: string
+  proximaVisita?: string
+}
+
 export interface Solicitud extends AuditFields {
   id: string
   tipo: TipoSolicitud
