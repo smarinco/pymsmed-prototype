@@ -20,6 +20,8 @@ import type {
   EmpresaSalaAmiga,
   SocializacionNorma,
   SeguimientoSalaAmiga,
+  FormularioDinamico,
+  RespuestaFormulario,
 } from '@/shared/types/domain'
 
 const now = '2026-05-04T10:00:00'
@@ -650,6 +652,123 @@ export const seguimientosSalaSeed: SeguimientoSalaAmiga[] = [
     hallazgos: 'Espacio seleccionado pero sin adecuación. Falta refrigerador y lavamanos.',
     recomendaciones: 'Instalar lavamanos, adquirir refrigerador, señalizar el espacio.',
     proximaVisita: '2026-06-01',
+    ...audit,
+  },
+]
+
+// --- Formularios Dinámicos ---
+export const formulariosSeed: FormularioDinamico[] = [
+  {
+    id: 'fd1', codigo: 'FD-001', nombre: 'Tamizaje Visual Infantil', version: '1.0',
+    descripcion: 'Formulario de tamizaje visual para niños entre 3 y 12 años. Detecta alteraciones visuales tempranas.',
+    dimension: 'vida_saludable', aplicaA: ['ninos'],
+    estado: 'activo', creadoEn: '2026-01-15', actualizadoEn: '2026-03-01',
+    secciones: [
+      {
+        id: 's1', titulo: 'Datos del tamizaje', campos: [
+          { id: 'fecha_tamizaje', label: 'Fecha del tamizaje', tipo: 'date', requerido: true },
+          { id: 'profesional', label: 'Profesional que realiza', tipo: 'text', requerido: true },
+          { id: 'lugar', label: 'Lugar', tipo: 'text', requerido: true, placeholder: 'Institución o entorno' },
+        ],
+      },
+      {
+        id: 's2', titulo: 'Evaluación visual', descripcion: 'Aplicar carta de Snellen a 3 metros', campos: [
+          { id: 'agudeza_od', label: 'Agudeza visual ojo derecho', tipo: 'select', requerido: true, opciones: ['20/20', '20/30', '20/40', '20/50', '20/70', '20/100', '20/200', 'No coopera'] },
+          { id: 'agudeza_oi', label: 'Agudeza visual ojo izquierdo', tipo: 'select', requerido: true, opciones: ['20/20', '20/30', '20/40', '20/50', '20/70', '20/100', '20/200', 'No coopera'] },
+          { id: 'usa_lentes', label: '¿Usa lentes actualmente?', tipo: 'radio', requerido: true, opciones: ['Sí', 'No'] },
+          { id: 'refiere_dificultad', label: '¿Refiere dificultad para ver?', tipo: 'radio', requerido: true, opciones: ['Sí', 'No'] },
+          { id: 'dolor_cabeza', label: '¿Presenta cefalea frecuente?', tipo: 'radio', requerido: false, opciones: ['Sí', 'No'] },
+        ],
+      },
+      {
+        id: 's3', titulo: 'Resultado y conducta', campos: [
+          { id: 'resultado', label: 'Resultado del tamizaje', tipo: 'select', requerido: true, opciones: ['Normal', 'Alterado - Leve', 'Alterado - Moderado', 'Alterado - Severo'] },
+          { id: 'requiere_remision', label: '¿Requiere remisión a optometría?', tipo: 'radio', requerido: true, opciones: ['Sí', 'No'] },
+          { id: 'observaciones', label: 'Observaciones', tipo: 'textarea', requerido: false, placeholder: 'Notas adicionales del tamizaje...' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'fd2', codigo: 'FD-002', nombre: 'Valoración Nutricional', version: '2.1',
+    descripcion: 'Formulario de valoración del estado nutricional. Incluye antropometría y hábitos alimentarios.',
+    dimension: 'vida_saludable', aplicaA: ['ninos', 'adolescentes', 'adultos', 'gestantes', 'adulto_mayor'],
+    estado: 'activo', creadoEn: '2026-01-10', actualizadoEn: '2026-04-15',
+    secciones: [
+      {
+        id: 's1', titulo: 'Antropometría', campos: [
+          { id: 'peso', label: 'Peso (kg)', tipo: 'number', requerido: true, placeholder: 'Ej: 65.5' },
+          { id: 'talla', label: 'Talla (cm)', tipo: 'number', requerido: true, placeholder: 'Ej: 170' },
+          { id: 'perimetro_brazo', label: 'Perímetro braquial (cm)', tipo: 'number', requerido: false },
+          { id: 'imc_calculado', label: 'IMC calculado', tipo: 'text', requerido: false, ayuda: 'Se calcula automáticamente en producción' },
+        ],
+      },
+      {
+        id: 's2', titulo: 'Hábitos alimentarios', campos: [
+          { id: 'comidas_dia', label: 'Número de comidas al día', tipo: 'select', requerido: true, opciones: ['1', '2', '3', '4', '5 o más'] },
+          { id: 'consume_frutas', label: '¿Consume frutas diariamente?', tipo: 'radio', requerido: true, opciones: ['Sí', 'No', 'A veces'] },
+          { id: 'consume_verduras', label: '¿Consume verduras diariamente?', tipo: 'radio', requerido: true, opciones: ['Sí', 'No', 'A veces'] },
+          { id: 'consume_lacteos', label: '¿Consume lácteos diariamente?', tipo: 'radio', requerido: true, opciones: ['Sí', 'No', 'A veces'] },
+          { id: 'acceso_agua', label: '¿Tiene acceso a agua potable?', tipo: 'radio', requerido: true, opciones: ['Sí', 'No'] },
+          { id: 'alergias', label: 'Alergias alimentarias', tipo: 'textarea', requerido: false },
+        ],
+      },
+      {
+        id: 's3', titulo: 'Clasificación nutricional', campos: [
+          { id: 'clasificacion', label: 'Clasificación', tipo: 'select', requerido: true, opciones: ['Adecuado', 'Riesgo de desnutrición', 'Desnutrición aguda', 'Desnutrición crónica', 'Sobrepeso', 'Obesidad'] },
+          { id: 'conducta', label: 'Conducta', tipo: 'select', requerido: true, opciones: ['Consejería nutricional', 'Remisión a nutrición', 'Remisión a programa de recuperación', 'Control en 3 meses'] },
+          { id: 'observaciones', label: 'Observaciones', tipo: 'textarea', requerido: false },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'fd3', codigo: 'FD-003', nombre: 'Escala de Ansiedad y Depresión (PHQ-4)', version: '1.0',
+    descripcion: 'Cuestionario breve de tamizaje para ansiedad y depresión. 4 preguntas con escala Likert.',
+    dimension: 'salud_mental', aplicaA: ['adolescentes', 'adultos', 'adulto_mayor'],
+    estado: 'activo', creadoEn: '2026-02-01', actualizadoEn: '2026-02-01',
+    secciones: [
+      {
+        id: 's1', titulo: 'En las últimas 2 semanas, ¿con qué frecuencia le han molestado los siguientes problemas?',
+        descripcion: '0=Nunca, 1=Varios días, 2=Más de la mitad de los días, 3=Casi todos los días',
+        campos: [
+          { id: 'nervioso', label: 'Sentirse nervioso/a, ansioso/a o con los nervios de punta', tipo: 'select', requerido: true, opciones: ['0 - Nunca', '1 - Varios días', '2 - Más de la mitad', '3 - Casi todos los días'] },
+          { id: 'no_controlar', label: 'No poder dejar de preocuparse o no controlar la preocupación', tipo: 'select', requerido: true, opciones: ['0 - Nunca', '1 - Varios días', '2 - Más de la mitad', '3 - Casi todos los días'] },
+          { id: 'poco_interes', label: 'Poco interés o placer en hacer las cosas', tipo: 'select', requerido: true, opciones: ['0 - Nunca', '1 - Varios días', '2 - Más de la mitad', '3 - Casi todos los días'] },
+          { id: 'deprimido', label: 'Sentirse decaído/a, deprimido/a o sin esperanza', tipo: 'select', requerido: true, opciones: ['0 - Nunca', '1 - Varios días', '2 - Más de la mitad', '3 - Casi todos los días'] },
+        ],
+      },
+      {
+        id: 's2', titulo: 'Resultado', campos: [
+          { id: 'puntaje_total', label: 'Puntaje total (0-12)', tipo: 'number', requerido: true, ayuda: '0-2: Normal, 3-5: Leve, 6-8: Moderado, 9-12: Severo' },
+          { id: 'clasificacion', label: 'Clasificación', tipo: 'select', requerido: true, opciones: ['Normal (0-2)', 'Leve (3-5)', 'Moderado (6-8)', 'Severo (9-12)'] },
+          { id: 'conducta', label: 'Conducta', tipo: 'select', requerido: true, opciones: ['Sin intervención', 'Consejería breve', 'Remisión a psicología', 'Remisión urgente a psiquiatría'] },
+          { id: 'observaciones', label: 'Observaciones', tipo: 'textarea', requerido: false },
+        ],
+      },
+    ],
+  },
+]
+
+export const respuestasFormularioSeed: RespuestaFormulario[] = [
+  {
+    id: 'rf1', formularioId: 'fd1', personaId: 'p3', visitaId: 'v1',
+    respuestas: {
+      fecha_tamizaje: '2026-04-28', profesional: 'Ana Martínez', lugar: 'Centro Comunitario La Esperanza',
+      agudeza_od: '20/30', agudeza_oi: '20/40', usa_lentes: 'No', refiere_dificultad: 'Sí',
+      resultado: 'Alterado - Leve', requiere_remision: 'Sí', observaciones: 'Niña refiere dificultad para ver el tablero.',
+    },
+    completado: true, fecha: '2026-04-28',
+    ...audit,
+  },
+  {
+    id: 'rf2', formularioId: 'fd2', personaId: 'p7', visitaId: 'v5',
+    respuestas: {
+      peso: 14, talla: 98, comidas_dia: '3', consume_frutas: 'A veces', consume_verduras: 'No',
+      consume_lacteos: 'Sí', acceso_agua: 'Sí',
+      clasificacion: 'Riesgo de desnutrición', conducta: 'Remisión a nutrición',
+    },
+    completado: true, fecha: '2026-05-03',
     ...audit,
   },
 ]

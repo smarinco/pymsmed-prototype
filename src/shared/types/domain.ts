@@ -486,6 +486,51 @@ export interface SeguimientoSalaAmiga extends AuditFields {
   proximaVisita?: string
 }
 
+// --- Formularios Dinámicos ---
+export type TipoCampoDinamico = 'text' | 'number' | 'select' | 'checkbox' | 'radio' | 'textarea' | 'date'
+
+export interface CampoDinamico {
+  id: string
+  label: string
+  tipo: TipoCampoDinamico
+  requerido: boolean
+  opciones?: string[]       // para select, radio, checkbox
+  placeholder?: string
+  ayuda?: string            // tooltip o texto de ayuda
+  valorPorDefecto?: string
+}
+
+export interface SeccionFormulario {
+  id: string
+  titulo: string
+  descripcion?: string
+  campos: CampoDinamico[]
+}
+
+export interface FormularioDinamico {
+  id: string
+  codigo: string
+  nombre: string
+  version: string
+  descripcion: string
+  dimension: Dimension
+  aplicaA: ('ninos' | 'adolescentes' | 'adultos' | 'gestantes' | 'adulto_mayor' | 'todos')[]
+  secciones: SeccionFormulario[]
+  estado: 'activo' | 'borrador' | 'inactivo'
+  creadoEn: string
+  actualizadoEn: string
+}
+
+export interface RespuestaFormulario extends AuditFields {
+  id: string
+  formularioId: string
+  personaId: string
+  visitaId?: string
+  respuestas: Record<string, string | boolean | number>
+  completado: boolean
+  fecha: string
+}
+
 export interface Solicitud extends AuditFields {
   id: string
   tipo: TipoSolicitud

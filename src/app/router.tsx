@@ -37,6 +37,9 @@ import { SaludAmbientalCreatePage } from '@/modules/saludAmbiental/pages/SaludAm
 import { ActivosListPage } from '@/modules/activos/pages/ActivosListPage'
 import { ActivoDetailPage } from '@/modules/activos/pages/ActivoDetailPage'
 import { ActivoCreatePage } from '@/modules/activos/pages/ActivoCreatePage'
+import { FormulariosListPage } from '@/modules/formularios/pages/FormulariosListPage'
+import { FormularioDetailPage } from '@/modules/formularios/pages/FormularioDetailPage'
+import { FormularioEjecutarPage } from '@/modules/formularios/pages/FormularioEjecutarPage'
 import { SalasAmigasListPage } from '@/modules/salasAmigas/pages/SalasAmigasListPage'
 import { SalaAmigaDetailPage } from '@/modules/salasAmigas/pages/SalaAmigaDetailPage'
 import { SalaAmigaCreatePage } from '@/modules/salasAmigas/pages/SalaAmigaCreatePage'
@@ -94,6 +97,11 @@ export function AppRouter() {
         {/* Participantes y Atenciones */}
         <Route path="/visitas/:visitaId/agregar-participante" element={<AgregarParticipantePage />} />
         <Route path="/visitas/:visitaId/participantes/:personaId/atencion" element={<AtencionPage />} />
+
+        {/* Formularios Dinámicos */}
+        <Route path="/formularios" element={<FormulariosListPage />} />
+        <Route path="/formularios/:id" element={<FormularioDetailPage />} />
+        <Route path="/formularios/:id/ejecutar" element={<FormularioEjecutarPage />} />
 
         {/* Salas Amigas */}
         <Route path="/salas-amigas" element={<SalasAmigasListPage />} />
