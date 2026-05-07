@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Eye, Play, FileSpreadsheet } from 'lucide-react'
+import { Eye, Play, FileSpreadsheet, Plus } from 'lucide-react'
 import { PageHeader } from '@/shared/components/PageHeader'
 import { Button } from '@/shared/components/Button'
 import { Badge } from '@/shared/components/Badge'
@@ -71,6 +71,7 @@ export function FormulariosListPage() {
         title="Formularios Dinámicos"
         subtitle="Catálogo de formularios y tamizajes parametrizados"
         breadcrumbs={[{ label: 'Dashboard', to: '/dashboard' }, { label: 'Formularios Dinámicos' }]}
+        actions={<Button icon={<Plus size={16} />} onClick={() => navigate('/formularios/crear')}>Crear formulario</Button>}
       />
 
       <div className="rounded-lg border bg-blue-50 border-blue-200 p-3 mb-6 text-sm text-blue-800">

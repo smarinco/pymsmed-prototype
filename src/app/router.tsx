@@ -40,6 +40,7 @@ import { ActivoCreatePage } from '@/modules/activos/pages/ActivoCreatePage'
 import { FormulariosListPage } from '@/modules/formularios/pages/FormulariosListPage'
 import { FormularioDetailPage } from '@/modules/formularios/pages/FormularioDetailPage'
 import { FormularioEjecutarPage } from '@/modules/formularios/pages/FormularioEjecutarPage'
+import { FormularioCreatePage } from '@/modules/formularios/pages/FormularioCreatePage'
 import { SalasAmigasListPage } from '@/modules/salasAmigas/pages/SalasAmigasListPage'
 import { SalaAmigaDetailPage } from '@/modules/salasAmigas/pages/SalaAmigaDetailPage'
 import { SalaAmigaCreatePage } from '@/modules/salasAmigas/pages/SalaAmigaCreatePage'
@@ -100,6 +101,7 @@ export function AppRouter() {
 
         {/* Formularios Dinámicos */}
         <Route path="/formularios" element={<FormulariosListPage />} />
+        <Route path="/formularios/crear" element={<FormularioCreatePage />} />
         <Route path="/formularios/:id" element={<FormularioDetailPage />} />
         <Route path="/formularios/:id/ejecutar" element={<FormularioEjecutarPage />} />
 
