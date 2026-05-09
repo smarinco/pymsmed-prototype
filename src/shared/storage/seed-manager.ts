@@ -21,6 +21,7 @@ import {
   seguimientosSalaSeed,
   formulariosSeed,
   respuestasFormularioSeed,
+  eventosSeed,
 } from '@/shared/mock/seed-data'
 
 const STORAGE_KEYS = {
@@ -46,6 +47,7 @@ const STORAGE_KEYS = {
   seguimientosSala: 'pyms_seguimientos_sala',
   formularios: 'pyms_formularios_dinamicos',
   respuestasFormulario: 'pyms_respuestas_formulario',
+  eventos: 'pyms_eventos_calendario',
 } as const
 
 export function seedIfEmpty(): void {
@@ -72,6 +74,7 @@ export function seedIfEmpty(): void {
     [STORAGE_KEYS.seguimientosSala]: seguimientosSalaSeed,
     [STORAGE_KEYS.formularios]: formulariosSeed,
     [STORAGE_KEYS.respuestasFormulario]: respuestasFormularioSeed,
+    [STORAGE_KEYS.eventos]: eventosSeed,
   }
 
   for (const [key, data] of Object.entries(seeds)) {
@@ -104,6 +107,7 @@ export function resetAllData(): void {
   localStorage.setItem(STORAGE_KEYS.seguimientosSala, JSON.stringify(seguimientosSalaSeed))
   localStorage.setItem(STORAGE_KEYS.formularios, JSON.stringify(formulariosSeed))
   localStorage.setItem(STORAGE_KEYS.respuestasFormulario, JSON.stringify(respuestasFormularioSeed))
+  localStorage.setItem(STORAGE_KEYS.eventos, JSON.stringify(eventosSeed))
 }
 
 export { STORAGE_KEYS }

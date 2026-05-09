@@ -531,6 +531,22 @@ export interface RespuestaFormulario extends AuditFields {
   fecha: string
 }
 
+// --- Calendarización ---
+export type TipoEvento = 'visita' | 'actividad' | 'reunion' | 'capacitacion' | 'jornada' | 'otro'
+
+export interface EventoCalendario {
+  id: string
+  titulo: string
+  tipo: TipoEvento
+  fecha: string
+  horaInicio: string
+  horaFin: string
+  profesional: string
+  lugar: string
+  descripcion: string
+  color: string
+}
+
 export interface Solicitud extends AuditFields {
   id: string
   tipo: TipoSolicitud

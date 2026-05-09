@@ -44,6 +44,8 @@ import { FormularioCreatePage } from '@/modules/formularios/pages/FormularioCrea
 import { SalasAmigasListPage } from '@/modules/salasAmigas/pages/SalasAmigasListPage'
 import { SalaAmigaDetailPage } from '@/modules/salasAmigas/pages/SalaAmigaDetailPage'
 import { SalaAmigaCreatePage } from '@/modules/salasAmigas/pages/SalaAmigaCreatePage'
+import { CalendarizacionPage } from '@/modules/calendarizacion/pages/CalendarizacionPage'
+import { HistorialAtencionesPage } from '@/modules/historial/pages/HistorialAtencionesPage'
 import { ReportesPage } from '@/modules/reportes/pages/ReportesPage'
 import { PlaceholderPage } from '@/shared/components/PlaceholderPage'
 
@@ -129,6 +131,10 @@ export function AppRouter() {
         {/* Canalizaciones */}
         <Route path="/canalizaciones" element={<CanalizacionesListPage />} />
         <Route path="/canalizaciones/:id" element={<CanalizacionDetailPage />} />
+
+        {/* Historial y Calendarización */}
+        <Route path="/historial" element={<HistorialAtencionesPage />} />
+        <Route path="/calendarizacion" element={<CalendarizacionPage />} />
 
         {/* Reportes */}
         <Route path="/reportes" element={<ReportesPage />} />

@@ -22,6 +22,7 @@ import type {
   SeguimientoSalaAmiga,
   FormularioDinamico,
   RespuestaFormulario,
+  EventoCalendario,
 } from '@/shared/types/domain'
 
 const now = '2026-05-04T10:00:00'
@@ -771,4 +772,20 @@ export const respuestasFormularioSeed: RespuestaFormulario[] = [
     completado: true, fecha: '2026-05-03',
     ...audit,
   },
+]
+
+// --- Eventos de calendario ---
+export const eventosSeed: EventoCalendario[] = [
+  { id: 'ev1', titulo: 'Visita Comunitaria La Esperanza', tipo: 'visita', fecha: '2026-05-10', horaInicio: '08:00', horaFin: '12:00', profesional: 'Ana Martínez', lugar: 'Centro Comunitario La Esperanza', descripcion: 'Jornada de tamizaje nutricional', color: '#3b82f6' },
+  { id: 'ev2', titulo: 'Taller Salud Mental', tipo: 'actividad', fecha: '2026-05-12', horaInicio: '14:00', horaFin: '17:00', profesional: 'Jorge Restrepo', lugar: 'Salón Comunal Manrique', descripcion: 'Taller grupal manejo del estrés', color: '#8b5cf6' },
+  { id: 'ev3', titulo: 'Reunión equipo PYMS', tipo: 'reunion', fecha: '2026-05-13', horaInicio: '09:00', horaFin: '10:30', profesional: 'Carlos Gómez', lugar: 'Oficina Secretaría de Salud', descripcion: 'Revisión mensual de indicadores', color: '#6b7280' },
+  { id: 'ev4', titulo: 'Capacitación formularios', tipo: 'capacitacion', fecha: '2026-05-14', horaInicio: '08:00', horaFin: '12:00', profesional: 'María López', lugar: 'Sala de reuniones piso 3', descripcion: 'Capacitación sobre nuevos formularios dinámicos', color: '#f59e0b' },
+  { id: 'ev5', titulo: 'Brigada Salud Oral', tipo: 'jornada', fecha: '2026-05-15', horaInicio: '08:00', horaFin: '16:00', profesional: 'Jorge Restrepo', lugar: 'Parque Recreativo San Javier', descripcion: 'Brigada con aplicación de flúor', color: '#10b981' },
+  { id: 'ev6', titulo: 'Caracterización Hogar sector 3', tipo: 'visita', fecha: '2026-05-16', horaInicio: '08:00', horaFin: '12:00', profesional: 'Ana Martínez', lugar: 'Barrio Santo Domingo', descripcion: 'Caracterización de hogares nuevos', color: '#3b82f6' },
+  { id: 'ev7', titulo: 'Visita Entorno Educativo', tipo: 'visita', fecha: '2026-05-19', horaInicio: '07:30', horaFin: '11:30', profesional: 'Ana Martínez', lugar: 'I.E. Félix de Bedout', descripcion: 'Charla derechos sexuales 10° grado', color: '#3b82f6' },
+  { id: 'ev8', titulo: 'Seguimiento canalizaciones', tipo: 'otro', fecha: '2026-05-20', horaInicio: '14:00', horaFin: '16:00', profesional: 'Jorge Restrepo', lugar: 'Oficina', descripcion: 'Revisión de canalizaciones pendientes', color: '#ef4444' },
+  { id: 'ev9', titulo: 'Encuentro Seguridad Alimentaria', tipo: 'actividad', fecha: '2026-05-20', horaInicio: '09:00', horaFin: '13:00', profesional: 'Ana Martínez', lugar: 'Sede Social Villa Hermosa', descripcion: 'Encuentro huertas caseras', color: '#8b5cf6' },
+  { id: 'ev10', titulo: 'Verificación Sala Amiga', tipo: 'visita', fecha: '2026-05-22', horaInicio: '10:00', horaFin: '11:30', profesional: 'Ana Martínez', lugar: 'Confecciones El Progreso', descripcion: 'Verificación semestral sala amiga', color: '#3b82f6' },
+  { id: 'ev11', titulo: 'Jornada vacunación', tipo: 'jornada', fecha: '2026-05-23', horaInicio: '08:00', horaFin: '16:00', profesional: 'María López', lugar: 'Centro de Salud Santo Domingo', descripcion: 'Jornada de vacunación PAI', color: '#10b981' },
+  { id: 'ev12', titulo: 'Comité técnico mensual', tipo: 'reunion', fecha: '2026-05-27', horaInicio: '14:00', horaFin: '16:00', profesional: 'Carlos Gómez', lugar: 'Oficina Secretaría de Salud', descripcion: 'Comité técnico con supervisores', color: '#6b7280' },
 ]
