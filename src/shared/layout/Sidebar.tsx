@@ -143,7 +143,7 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
       {/* Footer */}
       {open && (
         <div className="px-4 py-3 border-t border-gray-100 text-[11px] text-gray-300">
-          PYMSMED v0.1 — Prototipo
+          PYMSMED v0.1
         </div>
       )}
     </aside>
