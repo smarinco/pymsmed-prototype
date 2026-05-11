@@ -115,7 +115,7 @@ export function DashboardPage() {
             <div className="min-w-0">
               <div className="text-xl font-bold text-gray-800">{stat.value}</div>
               <div className="text-xs text-gray-500 truncate">{stat.label}</div>
-              {stat.sub && <div className="text-[10px] text-gray-400">{stat.sub}</div>}
+              {stat.sub && <div className="text-[12px] text-gray-400">{stat.sub}</div>}
             </div>
           </button>
         ))}

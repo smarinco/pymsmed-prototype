@@ -182,7 +182,7 @@ export function CaracterizacionPage() {
                 : 'bg-white text-gray-500 border-gray-200 disabled:opacity-40'
               }`}
             >
-              {sec?.completada ? <CheckCircle size={14} /> : <span className="w-4 h-4 rounded-full border-2 border-current flex items-center justify-center text-[10px]">{i + 1}</span>}
+              {sec?.completada ? <CheckCircle size={14} /> : <span className="w-4 h-4 rounded-full border-2 border-current flex items-center justify-center text-[12px]">{i + 1}</span>}
               {d.label}
             </button>
           )

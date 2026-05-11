@@ -12,7 +12,7 @@ export function Card({ children, className = '', title, actions }: CardProps) {
     <div className={`bg-white rounded-xl border border-gray-200 ${className}`}>
       {(title || actions) && (
         <div className="flex items-center justify-between border-b border-gray-100 px-5 py-3">
-          {title && <h3 className="text-[13px] font-semibold text-navy">{title}</h3>}
+          {title && <h3 className="text-[15px] font-semibold text-navy">{title}</h3>}
           {actions && <div className="flex gap-2">{actions}</div>}
         </div>
       )}

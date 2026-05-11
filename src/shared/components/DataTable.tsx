@@ -39,7 +39,7 @@ export function DataTable<T>({
             placeholder={searchPlaceholder}
             value={search}
             onChange={(e) => handleSearch(e.target.value)}
-            className="w-full max-w-sm border border-gray-200 rounded-lg px-3 py-1.5 text-[12px] text-navy placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
+            className="w-full max-w-sm border border-gray-200 rounded-lg px-3 py-1.5 text-[14px] text-navy placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
           />
         </div>
       )}
@@ -54,7 +54,7 @@ export function DataTable<T>({
                 {columns.map((col) => (
                   <th
                     key={col.key}
-                    className="px-4 py-3 text-left text-[10px] font-semibold text-gray-500 uppercase tracking-wide"
+                    className="px-4 py-3 text-left text-[12px] font-semibold text-gray-500 uppercase tracking-wide"
                   >
                     {col.header}
                   </th>
@@ -65,7 +65,7 @@ export function DataTable<T>({
               {data.map((item, index) => (
                 <tr key={index} className="border-b border-gray-50 hover:bg-orange-50/30 transition-colors">
                   {columns.map((col) => (
-                    <td key={col.key} className="px-4 py-3 text-[13px] text-navy">
+                    <td key={col.key} className="px-4 py-3 text-[15px] text-navy">
                       {col.render(item)}
                     </td>
                   ))}

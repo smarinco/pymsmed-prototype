@@ -43,7 +43,7 @@ function StatCard({ label, value, sub, color = 'text-gray-800' }: StatCardProps)
     <div className="rounded-lg border bg-white p-4 text-center">
       <div className={`text-2xl font-bold ${color}`}>{value}</div>
       <div className="text-xs text-gray-500">{label}</div>
-      {sub && <div className="text-[10px] text-gray-400 mt-0.5">{sub}</div>}
+      {sub && <div className="text-[12px] text-gray-400 mt-0.5">{sub}</div>}
     </div>
   )
 }

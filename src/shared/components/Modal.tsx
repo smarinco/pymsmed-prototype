@@ -31,7 +31,7 @@ export function Modal({ open, onClose, title, children, size = 'md' }: ModalProp
       <div className={`relative w-full ${sizeStyles[size]} rounded-xl bg-white shadow-2xl mx-4`}>
         <div className="bg-navy px-6 py-5 rounded-t-xl">
           <div className="flex items-center justify-between">
-            <h2 className="text-[18px] font-bold text-white">{title}</h2>
+            <h2 className="text-[20px] font-bold text-white">{title}</h2>
             <button onClick={onClose} className="text-white/40 hover:text-white transition-colors">
               <X size={20} />
             </button>

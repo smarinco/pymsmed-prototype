@@ -59,7 +59,7 @@ function NavItem({ to, icon: Icon, label, open: sidebarOpen }: { to: string; ico
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12px] transition-colors ${
+        `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[14px] transition-colors ${
           isActive ? 'text-accent font-semibold' : 'text-secondary hover:text-accent'
         }`
       }
@@ -83,11 +83,11 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
       <div className="flex h-[52px] items-center justify-between px-3 shrink-0">
         {open ? (
           <div className="flex items-center gap-2 cursor-pointer" onClick={onToggle}>
-            <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center text-[11px] font-bold text-white">P</div>
-            <span className="font-bold text-[13px] text-navy">PYMSMED</span>
+            <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center text-[13px] font-bold text-white">P</div>
+            <span className="font-bold text-[15px] text-navy">PYMSMED</span>
           </div>
         ) : (
-          <button onClick={onToggle} className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center text-[11px] font-bold text-white mx-auto">
+          <button onClick={onToggle} className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center text-[13px] font-bold text-white mx-auto">
             P
           </button>
         )}
@@ -102,7 +102,7 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
           <div>
             <button
               onClick={() => setEntornosOpen(!entornosOpen)}
-              className={`flex w-full items-center justify-between px-3 py-2 rounded-lg text-[12px] transition-colors ${
+              className={`flex w-full items-center justify-between px-3 py-2 rounded-lg text-[14px] transition-colors ${
                 isEntornoActive ? 'text-accent font-semibold' : 'text-secondary hover:text-accent'
               }`}
             >
@@ -119,7 +119,7 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
                     key={item.to}
                     to={item.to}
                     className={({ isActive }) =>
-                      `flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] transition-colors ${
+                      `flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] transition-colors ${
                         isActive ? 'text-accent font-semibold' : 'text-gray-400 hover:text-accent'
                       }`
                     }
@@ -142,7 +142,7 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
 
       {/* Footer */}
       {open && (
-        <div className="px-4 py-3 border-t border-gray-100 text-[9px] text-gray-300">
+        <div className="px-4 py-3 border-t border-gray-100 text-[11px] text-gray-300">
           PYMSMED v0.1 — Prototipo
         </div>
       )}

@@ -135,11 +135,11 @@ export function CalendarizacionPage() {
                     </div>
                     <div className="space-y-0.5">
                       {evts.slice(0, 3).map((e) => (
-                        <div key={e.id} className="text-[10px] rounded px-1 py-0.5 text-white truncate" style={{ backgroundColor: e.color }}>
+                        <div key={e.id} className="text-[12px] rounded px-1 py-0.5 text-white truncate" style={{ backgroundColor: e.color }}>
                           {e.titulo}
                         </div>
                       ))}
-                      {evts.length > 3 && <div className="text-[10px] text-gray-400 pl-1">+{evts.length - 3} más</div>}
+                      {evts.length > 3 && <div className="text-[12px] text-gray-400 pl-1">+{evts.length - 3} más</div>}
                     </div>
                   </button>
                 )
