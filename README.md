@@ -1,6 +1,6 @@
 # PYMSMED — Prototipo Funcional
 
-Prototipo frontend-only del módulo de **Promoción y Mantenimiento de la Salud** para SIISMED, Secretaría de Salud de Medellín.
+Prototipo frontend-only del módulo de **Promoción y Mantenimiento de la Salud** para Secretaría de Salud de Medellín.
 
 ## Ejecutar
 
@@ -165,7 +165,7 @@ Interface `Repository<T>` con `list()`, `getById()`, `create()`, `update()`, `de
 
 **Entornos genéricos:** `entorno-config.ts` define campos por tipo. 3 páginas genéricas reciben la config como prop. Para agregar un nuevo tipo de entorno solo se agrega una entrada en la config.
 
-**Formularios dinámicos:** La estructura JSON del formulario genera la UI automáticamente. El mismo patrón se usará con el módulo transversal de SIISMED.
+**Formularios dinámicos:** La estructura JSON del formulario genera la UI automáticamente. El mismo patrón se usará con el módulo transversal de sistema externo.
 
 ## Stack técnico
 
@@ -181,7 +181,7 @@ Interface `Repository<T>` con `list()`, `getById()`, `create()`, `update()`, `de
 Los siguientes archivos documentan la migración futura:
 
 - `src/shared/storage/api-repository.ts` — Clase `ApiRepository` vacía con 20+ endpoints documentados
-- `docs/decisiones-abiertas.md` — Preguntas TODO-SIISMED, TODO-BACKEND, TODO-API
+- `docs/decisiones-abiertas.md` — Preguntas TODO-INTEGRACION, TODO-BACKEND, TODO-API
 
 ## Checklist de validación con usuarios
 

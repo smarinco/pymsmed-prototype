@@ -266,7 +266,7 @@ export function AgregarParticipantePage() {
       {showCreateForm && (
         <Card title="Registrar nueva persona (mock)" className="mb-6">
           <p className="text-xs text-gray-500 mb-4">
-            TODO-SIISMED: En producción, esta búsqueda consultará el servicio Personas Salud.
+            TODO-BACKEND: En producción, esta búsqueda consultará el servicio Personas Salud.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField label="Tipo documento" required>

@@ -50,7 +50,7 @@ export class ApiRepository<T extends { id: string }, CreateInput, UpdateInput>
 // ============================================
 // Endpoints futuros necesarios
 // ============================================
-// TODO-BACKEND: POST   /api/v1/auth/me                          → validar sesión SIISMED
+// TODO-BACKEND: POST   /api/v1/auth/me                          → validar sesión sistema externo
 // TODO-BACKEND: GET    /api/v1/entornos/comunitario              → listar entornos
 // TODO-BACKEND: POST   /api/v1/entornos/comunitario              → crear entorno
 // TODO-BACKEND: GET    /api/v1/entornos/comunitario/:id          → detalle entorno
@@ -62,7 +62,7 @@ export class ApiRepository<T extends { id: string }, CreateInput, UpdateInput>
 // TODO-BACKEND: PATCH  /api/v1/visitas/:id/cerrar                → cerrar visita
 // TODO-BACKEND: GET    /api/v1/visitas/:id/participantes         → participantes de visita
 // TODO-BACKEND: POST   /api/v1/visitas/:id/participantes         → agregar participante
-// TODO-SIISMED: GET    /api/v1/personas?documento=:doc           → buscar persona (Personas Salud)
+// TODO-INTEGRACION: GET    /api/v1/personas?documento=:doc           → buscar persona (Personas Salud)
 // TODO-BACKEND: POST   /api/v1/personas                          → crear persona mock
 // TODO-BACKEND: POST   /api/v1/atenciones                        → crear atención
 // TODO-BACKEND: PATCH  /api/v1/atenciones/:id/finalizar          → finalizar atención

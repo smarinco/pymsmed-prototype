@@ -225,7 +225,7 @@ export interface CreateVisitaInput {
   observaciones: string
 }
 
-// --- Personas mock (TODO-SIISMED: viene de Personas Salud) ---
+// --- Personas mock (TODO-BACKEND: viene de Personas Salud) ---
 export type TipoDocumento = 'CC' | 'TI' | 'RC' | 'CE' | 'PA' | 'PE'
 export type Sexo = 'masculino' | 'femenino' | 'intersexual' | 'no_reporta'
 

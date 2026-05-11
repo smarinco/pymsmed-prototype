@@ -18,7 +18,7 @@ export function Header() {
     <header className="flex h-[52px] items-center justify-between border-b border-gray-100 bg-white px-6 shrink-0">
       <div>
         <p className="text-[13px] text-gray-400">
-          Secretaría de Salud de Medellín · SIISMED
+          Secretaría de Salud de Medellín
         </p>
       </div>
 

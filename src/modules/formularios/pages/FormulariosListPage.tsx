@@ -75,7 +75,7 @@ export function FormulariosListPage() {
       />
 
       <div className="rounded-lg border bg-blue-50 border-blue-200 p-3 mb-6 text-sm text-blue-800">
-        <strong>TODO-BACKEND:</strong> En producción, los formularios se cargan desde el módulo transversal de SIISMED.
+        <strong>TODO-BACKEND:</strong> En producción, los formularios se cargan desde el módulo transversal de sistema externo.
         Esta vista simula la ejecución de formularios configurados dinámicamente.
       </div>
 

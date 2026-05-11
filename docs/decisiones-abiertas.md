@@ -2,11 +2,11 @@
 
 Decisiones técnicas y funcionales que requieren definición antes de pasar a fase backend.
 
-## TODO-SIISMED
+## TODO-INTEGRACION
 
 | # | Tema | Pregunta | Estado |
 |---|------|----------|--------|
-| 1 | Autenticación | ¿Cómo se leen las cookies `jwt_token_SIISMED` y `user_SIISMED`? ¿Hay endpoint de validación? | Pendiente |
+| 1 | Autenticación | ¿Cómo se leen las cookies `jwt_token_sistema externo` y `user_sistema externo`? ¿Hay endpoint de validación? | Pendiente |
 | 2 | Personas Salud | ¿Cuál es el endpoint para buscar personas por documento? ¿Qué campos retorna? | Pendiente |
 | 3 | Permisos | ¿Los permisos vienen como array en el token JWT o se consultan por endpoint? | Pendiente |
 | 4 | Contratos | ¿Cómo se consultan los contratos vigentes del usuario? ¿Vienen en la sesión? | Pendiente |
@@ -19,7 +19,7 @@ Decisiones técnicas y funcionales que requieren definición antes de pasar a fa
 |---|------|----------|--------|
 | 1 | Base de datos | Esquema PostgreSQL: ¿prefijo `pyms_` confirmado para todas las tablas? | Pendiente |
 | 2 | Auditoría | ¿La auditoría se guarda en tabla separada o en campos de la entidad? | Pendiente |
-| 3 | Códigos | ¿Los códigos de entorno (EC-001) son autogenerados o los asigna SIISMED? | Pendiente |
+| 3 | Códigos | ¿Los códigos de entorno (EC-001) son autogenerados o los asigna sistema externo? | Pendiente |
 | 4 | Inactivación | ¿La inactivación es reversible directamente o solo por solicitud aprobada? | Pendiente |
 | 5 | Reapertura | ¿Qué pasa cuando se aprueba una solicitud de reapertura? ¿Se cambia el estado automáticamente? | Pendiente |
 | 6 | Formularios dinámicos | ¿Se usarán los formularios del módulo transversal desde el inicio? | Pendiente |
@@ -40,7 +40,7 @@ Decisiones técnicas y funcionales que requieren definición antes de pasar a fa
 | Decisión | Justificación |
 |----------|--------------|
 | localStorage como persistencia | Permite demo sin backend; patrón Repository permite migrar después |
-| Selector de usuario mock | Simula roles sin depender de SIISMED |
+| Selector de usuario mock | Simula roles sin depender de sistema externo |
 | Semáforo rojo/amarillo/verde | Rojo = sin atención, Amarillo = parcial, Verde = todas finalizadas |
 | Solicitudes mock no ejecutan la acción | Solo quedan en estado pendiente/aprobada/rechazada; no modifican entidades automáticamente |
-| Códigos autogenerados | EC-001, EC-002... secuencial. TODO-BACKEND: confirmar con SIISMED |
+| Códigos autogenerados | EC-001, EC-002... secuencial. TODO-BACKEND: confirmar con sistema externo |
