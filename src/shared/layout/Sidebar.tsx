@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
+import { useMenuConfig } from '@/shared/context/MenuConfigContext'
 import {
   LayoutDashboard,
   MapPin,
@@ -72,8 +73,13 @@ function NavItem({ to, icon: Icon, label, open: sidebarOpen }: { to: string; ico
 
 export function Sidebar({ open, onToggle }: SidebarProps) {
   const location = useLocation()
+  const { isVisible } = useMenuConfig()
   const isEntornoActive = location.pathname.startsWith('/entornos') || location.pathname.startsWith('/hogares')
   const [entornosOpen, setEntornosOpen] = useState(isEntornoActive)
+
+  const visibleEntornos = entornoItems.filter((item) => isVisible(item.to))
+  const visibleOther = otherItems.filter((item) => isVisible(item.to))
+  const showEntornosGroup = isVisible('/entornos') && visibleEntornos.length > 0
 
   return (
     <aside
@@ -95,47 +101,49 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
 
       {/* Nav */}
       <nav className="flex-1 py-3 px-2 overflow-y-auto space-y-0.5">
-        <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" open={open} />
+        {isVisible('/dashboard') && <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" open={open} />}
 
         {/* Entornos group */}
-        {open ? (
-          <div>
-            <button
-              onClick={() => setEntornosOpen(!entornosOpen)}
-              className={`flex w-full items-center justify-between px-3 py-2 rounded-lg text-[14px] transition-colors ${
-                isEntornoActive ? 'text-accent font-semibold' : 'text-secondary hover:text-accent'
-              }`}
-            >
-              <span className="flex items-center gap-2.5">
-                <MapPin size={16} />
-                <span>Entornos</span>
-              </span>
-              <ChevronDown size={12} className={`transition-transform duration-200 ${entornosOpen ? 'rotate-180' : ''}`} />
-            </button>
-            {entornosOpen && (
-              <div className="ml-5 pl-3 border-l border-gray-100 space-y-0.5 mt-0.5">
-                {entornoItems.map((item) => (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    className={({ isActive }) =>
-                      `flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] transition-colors ${
-                        isActive ? 'text-accent font-semibold' : 'text-gray-400 hover:text-accent'
-                      }`
-                    }
-                  >
-                    <item.icon size={13} />
-                    <span>{item.label}</span>
-                  </NavLink>
-                ))}
-              </div>
-            )}
-          </div>
-        ) : (
-          <NavItem to="/entornos/comunitario" icon={MapPin} label="Entornos" open={false} />
+        {showEntornosGroup && (
+          open ? (
+            <div>
+              <button
+                onClick={() => setEntornosOpen(!entornosOpen)}
+                className={`flex w-full items-center justify-between px-3 py-2 rounded-lg text-[14px] transition-colors ${
+                  isEntornoActive ? 'text-accent font-semibold' : 'text-secondary hover:text-accent'
+                }`}
+              >
+                <span className="flex items-center gap-2.5">
+                  <MapPin size={16} />
+                  <span>Entornos</span>
+                </span>
+                <ChevronDown size={12} className={`transition-transform duration-200 ${entornosOpen ? 'rotate-180' : ''}`} />
+              </button>
+              {entornosOpen && (
+                <div className="ml-5 pl-3 border-l border-gray-100 space-y-0.5 mt-0.5">
+                  {visibleEntornos.map((item) => (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      className={({ isActive }) =>
+                        `flex items-center gap-2 px-3 py-1.5 rounded-lg text-[13px] transition-colors ${
+                          isActive ? 'text-accent font-semibold' : 'text-gray-400 hover:text-accent'
+                        }`
+                      }
+                    >
+                      <item.icon size={13} />
+                      <span>{item.label}</span>
+                    </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <NavItem to="/entornos/comunitario" icon={MapPin} label="Entornos" open={false} />
+          )
         )}
 
-        {otherItems.map((item) => (
+        {visibleOther.map((item) => (
           <NavItem key={item.to} to={item.to} icon={item.icon} label={item.label} open={open} />
         ))}
       </nav>
