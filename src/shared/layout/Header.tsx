@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { RefreshCw, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { useAuth } from '@/shared/context/AuthContext'
-import { resetAllData } from '@/shared/storage/seed-manager'
 
 const rolLabels: Record<string, string> = {
   administrador: 'Administrador',
@@ -15,13 +14,6 @@ export function Header() {
   const { usuario, setUsuario, usuarios } = useAuth()
   const [selectorOpen, setSelectorOpen] = useState(false)
 
-  const handleReset = () => {
-    if (window.confirm('¿Restaurar todos los datos de demostración? Se perderán los cambios realizados.')) {
-      resetAllData()
-      window.location.reload()
-    }
-  }
-
   return (
     <header className="flex h-[52px] items-center justify-between border-b border-gray-100 bg-white px-6 shrink-0">
       <div>
@@ -31,16 +23,6 @@ export function Header() {
       </div>
 
       <div className="flex items-center gap-3">
-        {/* Reset demo */}
-        <button
-          onClick={handleReset}
-          className="flex items-center gap-1.5 border border-gray-200 rounded-lg px-2.5 py-1 text-[13px] text-gray-500 hover:bg-gray-50 transition-colors"
-          title="Restaurar datos de demostración"
-        >
-          <RefreshCw size={12} />
-          Reset
-        </button>
-
         {/* User selector */}
         <div className="relative">
           <button

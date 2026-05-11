@@ -26,6 +26,7 @@ import { AdminLayout } from '@/modules/administracion/pages/AdminLayout'
 import { ContratosPage } from '@/modules/administracion/pages/ContratosPage'
 import { AdminSolicitudesPage } from '@/modules/administracion/pages/AdminSolicitudesPage'
 import { AuditoriaPage } from '@/modules/administracion/pages/AuditoriaPage'
+import { OpcionesPage } from '@/modules/administracion/pages/OpcionesPage'
 import { ActividadesListPage } from '@/modules/actividades/pages/ActividadesListPage'
 import { ActividadDetailPage } from '@/modules/actividades/pages/ActividadDetailPage'
 import { ActividadCreatePage } from '@/modules/actividades/pages/ActividadCreatePage'
@@ -151,6 +152,7 @@ export function AppRouter() {
           <Route index element={<Navigate to="contratos" replace />} />
           <Route path="contratos" element={<ContratosPage />} />
           <Route path="solicitudes" element={<AdminSolicitudesPage />} />
+          <Route path="opciones" element={<OpcionesPage />} />
           <Route path="auditoria" element={<AuditoriaPage />} />
         </Route>
 
