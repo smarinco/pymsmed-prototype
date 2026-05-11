@@ -37,7 +37,7 @@ const audit = {
 export const usuariosMock: UsuarioMock[] = [
   {
     id: 'u1',
-    nombre: 'Carlos Gómez',
+    nombre: 'Sergio Marín',
     rol: 'administrador',
     contrato: { id: 'c1', numero: 'CT-2026-001', proyecto: 'PYMS Medellín', estado: 'activo', vigenciaInicio: '2026-01-01', vigenciaFin: '2026-12-31' },
     permisos: ['entornos.read', 'entornos.write', 'visitas.read', 'visitas.write', 'atenciones.read', 'atenciones.write', 'solicitudes.read', 'solicitudes.write', 'administracion.read', 'administracion.write'],
@@ -196,12 +196,12 @@ export const solicitudesSeed: Solicitud[] = [
   {
     id: 's2', tipo: 'edicion', entidadTipo: 'entorno', entidadId: 'ec3',
     motivo: 'Corrección de dirección', justificacion: 'La dirección registrada tiene un error de nomenclatura.',
-    solicitante: 'Jorge Restrepo', estado: 'aprobada', resueltaPor: 'Carlos Gómez', resueltaEn: '2026-04-22T14:00:00', ...audit,
+    solicitante: 'Jorge Restrepo', estado: 'aprobada', resueltaPor: 'Sergio Marín', resueltaEn: '2026-04-22T14:00:00', ...audit,
   },
   {
     id: 's3', tipo: 'inactivacion', entidadTipo: 'entorno', entidadId: 'ec4',
     motivo: 'Cierre temporal', justificacion: 'La sede estará en mantenimiento por 3 meses.',
-    solicitante: 'María López', estado: 'rechazada', resueltaPor: 'Carlos Gómez', resueltaEn: '2026-04-25T09:00:00', ...audit,
+    solicitante: 'María López', estado: 'rechazada', resueltaPor: 'Sergio Marín', resueltaEn: '2026-04-25T09:00:00', ...audit,
   },
 ]
 
@@ -210,7 +210,7 @@ export const contratosSeed: Contrato[] = [
   {
     id: 'c1', numero: 'CT-2026-001', proyecto: 'PYMS Medellín', objeto: 'Prestación de servicios de promoción y mantenimiento de la salud en las 16 comunas de Medellín.',
     estado: 'activo', vigenciaInicio: '2026-01-01', vigenciaFin: '2026-12-31',
-    profesionalesAsignados: ['Carlos Gómez', 'María López', 'Ana Martínez', 'Jorge Restrepo'],
+    profesionalesAsignados: ['Sergio Marín', 'María López', 'Ana Martínez', 'Jorge Restrepo'],
     presupuesto: 850000000,
   },
   {
@@ -222,7 +222,7 @@ export const contratosSeed: Contrato[] = [
   {
     id: 'c3', numero: 'CT-2025-018', proyecto: 'PYMS Medellín 2025', objeto: 'Contrato de vigencia anterior para operación PYMS.',
     estado: 'inactivo', vigenciaInicio: '2025-01-01', vigenciaFin: '2025-12-31',
-    profesionalesAsignados: ['Carlos Gómez', 'Ana Martínez'],
+    profesionalesAsignados: ['Sergio Marín', 'Ana Martínez'],
     presupuesto: 780000000,
   },
   {
@@ -235,17 +235,17 @@ export const contratosSeed: Contrato[] = [
 
 // --- Auditoría ---
 export const auditoriaSeed: RegistroAuditoria[] = [
-  { id: 'aud1', fecha: '2026-04-10T08:30:00', usuario: 'Carlos Gómez', accion: 'creacion', modulo: 'Entornos', entidadTipo: 'entorno', entidadId: 'ec1', descripcion: 'Creó el entorno Centro Comunitario La Esperanza.' },
-  { id: 'aud2', fecha: '2026-04-10T09:00:00', usuario: 'Carlos Gómez', accion: 'creacion', modulo: 'Entornos', entidadTipo: 'entorno', entidadId: 'ec2', descripcion: 'Creó el entorno Parque Recreativo San Javier.' },
+  { id: 'aud1', fecha: '2026-04-10T08:30:00', usuario: 'Sergio Marín', accion: 'creacion', modulo: 'Entornos', entidadTipo: 'entorno', entidadId: 'ec1', descripcion: 'Creó el entorno Centro Comunitario La Esperanza.' },
+  { id: 'aud2', fecha: '2026-04-10T09:00:00', usuario: 'Sergio Marín', accion: 'creacion', modulo: 'Entornos', entidadTipo: 'entorno', entidadId: 'ec2', descripcion: 'Creó el entorno Parque Recreativo San Javier.' },
   { id: 'aud3', fecha: '2026-04-12T10:15:00', usuario: 'María López', accion: 'creacion', modulo: 'Entornos', entidadTipo: 'entorno', entidadId: 'ec3', descripcion: 'Creó el entorno Salón Comunal Manrique.' },
   { id: 'aud4', fecha: '2026-04-15T14:00:00', usuario: 'Ana Martínez', accion: 'creacion', modulo: 'Visitas', entidadTipo: 'visita', entidadId: 'v1', descripcion: 'Creó visita de Vida Saludable en Centro Comunitario La Esperanza.' },
   { id: 'aud5', fecha: '2026-04-15T16:30:00', usuario: 'Jorge Restrepo', accion: 'creacion', modulo: 'Visitas', entidadTipo: 'visita', entidadId: 'v2', descripcion: 'Creó visita de Salud Mental en Centro Comunitario La Esperanza.' },
   { id: 'aud6', fecha: '2026-04-16T09:00:00', usuario: 'Jorge Restrepo', accion: 'cierre', modulo: 'Visitas', entidadTipo: 'visita', entidadId: 'v2', descripcion: 'Cerró la visita de Salud Mental.' },
   { id: 'aud7', fecha: '2026-04-18T11:00:00', usuario: 'Ana Martínez', accion: 'creacion', modulo: 'Atenciones', entidadTipo: 'atencion', entidadId: 'at1', descripcion: 'Registró tamizaje para Andrés Felipe García Muñoz.' },
   { id: 'aud8', fecha: '2026-04-20T10:00:00', usuario: 'Jorge Restrepo', accion: 'solicitud', modulo: 'Solicitudes', entidadTipo: 'solicitud', entidadId: 's2', descripcion: 'Solicitó edición del entorno Salón Comunal Manrique.' },
-  { id: 'aud9', fecha: '2026-04-22T14:00:00', usuario: 'Carlos Gómez', accion: 'aprobacion', modulo: 'Solicitudes', entidadTipo: 'solicitud', entidadId: 's2', descripcion: 'Aprobó solicitud de edición del entorno Salón Comunal Manrique.' },
-  { id: 'aud10', fecha: '2026-04-25T09:00:00', usuario: 'Carlos Gómez', accion: 'rechazo', modulo: 'Solicitudes', entidadTipo: 'solicitud', entidadId: 's3', descripcion: 'Rechazó solicitud de inactivación de Sede Social Villa Hermosa.' },
-  { id: 'aud11', fecha: '2026-04-28T08:00:00', usuario: 'Carlos Gómez', accion: 'inactivacion', modulo: 'Entornos', entidadTipo: 'entorno', entidadId: 'ec5', descripcion: 'Inactivó el entorno Iglesia Santa Ana Castilla por remodelación.' },
+  { id: 'aud9', fecha: '2026-04-22T14:00:00', usuario: 'Sergio Marín', accion: 'aprobacion', modulo: 'Solicitudes', entidadTipo: 'solicitud', entidadId: 's2', descripcion: 'Aprobó solicitud de edición del entorno Salón Comunal Manrique.' },
+  { id: 'aud10', fecha: '2026-04-25T09:00:00', usuario: 'Sergio Marín', accion: 'rechazo', modulo: 'Solicitudes', entidadTipo: 'solicitud', entidadId: 's3', descripcion: 'Rechazó solicitud de inactivación de Sede Social Villa Hermosa.' },
+  { id: 'aud11', fecha: '2026-04-28T08:00:00', usuario: 'Sergio Marín', accion: 'inactivacion', modulo: 'Entornos', entidadTipo: 'entorno', entidadId: 'ec5', descripcion: 'Inactivó el entorno Iglesia Santa Ana Castilla por remodelación.' },
   { id: 'aud12', fecha: '2026-05-01T10:30:00', usuario: 'Ana Martínez', accion: 'creacion', modulo: 'Visitas', entidadTipo: 'visita', entidadId: 'v3', descripcion: 'Creó visita de Convivencia Social en Parque Recreativo San Javier.' },
 ]
 
@@ -778,7 +778,7 @@ export const respuestasFormularioSeed: RespuestaFormulario[] = [
 export const eventosSeed: EventoCalendario[] = [
   { id: 'ev1', titulo: 'Visita Comunitaria La Esperanza', tipo: 'visita', fecha: '2026-05-10', horaInicio: '08:00', horaFin: '12:00', profesional: 'Ana Martínez', lugar: 'Centro Comunitario La Esperanza', descripcion: 'Jornada de tamizaje nutricional', color: '#3b82f6' },
   { id: 'ev2', titulo: 'Taller Salud Mental', tipo: 'actividad', fecha: '2026-05-12', horaInicio: '14:00', horaFin: '17:00', profesional: 'Jorge Restrepo', lugar: 'Salón Comunal Manrique', descripcion: 'Taller grupal manejo del estrés', color: '#8b5cf6' },
-  { id: 'ev3', titulo: 'Reunión equipo PYMS', tipo: 'reunion', fecha: '2026-05-13', horaInicio: '09:00', horaFin: '10:30', profesional: 'Carlos Gómez', lugar: 'Oficina Secretaría de Salud', descripcion: 'Revisión mensual de indicadores', color: '#6b7280' },
+  { id: 'ev3', titulo: 'Reunión equipo PYMS', tipo: 'reunion', fecha: '2026-05-13', horaInicio: '09:00', horaFin: '10:30', profesional: 'Sergio Marín', lugar: 'Oficina Secretaría de Salud', descripcion: 'Revisión mensual de indicadores', color: '#6b7280' },
   { id: 'ev4', titulo: 'Capacitación formularios', tipo: 'capacitacion', fecha: '2026-05-14', horaInicio: '08:00', horaFin: '12:00', profesional: 'María López', lugar: 'Sala de reuniones piso 3', descripcion: 'Capacitación sobre nuevos formularios dinámicos', color: '#f59e0b' },
   { id: 'ev5', titulo: 'Brigada Salud Oral', tipo: 'jornada', fecha: '2026-05-15', horaInicio: '08:00', horaFin: '16:00', profesional: 'Jorge Restrepo', lugar: 'Parque Recreativo San Javier', descripcion: 'Brigada con aplicación de flúor', color: '#10b981' },
   { id: 'ev6', titulo: 'Caracterización Hogar sector 3', tipo: 'visita', fecha: '2026-05-16', horaInicio: '08:00', horaFin: '12:00', profesional: 'Ana Martínez', lugar: 'Barrio Santo Domingo', descripcion: 'Caracterización de hogares nuevos', color: '#3b82f6' },
@@ -787,5 +787,5 @@ export const eventosSeed: EventoCalendario[] = [
   { id: 'ev9', titulo: 'Encuentro Seguridad Alimentaria', tipo: 'actividad', fecha: '2026-05-20', horaInicio: '09:00', horaFin: '13:00', profesional: 'Ana Martínez', lugar: 'Sede Social Villa Hermosa', descripcion: 'Encuentro huertas caseras', color: '#8b5cf6' },
   { id: 'ev10', titulo: 'Verificación Sala Amiga', tipo: 'visita', fecha: '2026-05-22', horaInicio: '10:00', horaFin: '11:30', profesional: 'Ana Martínez', lugar: 'Confecciones El Progreso', descripcion: 'Verificación semestral sala amiga', color: '#3b82f6' },
   { id: 'ev11', titulo: 'Jornada vacunación', tipo: 'jornada', fecha: '2026-05-23', horaInicio: '08:00', horaFin: '16:00', profesional: 'María López', lugar: 'Centro de Salud Santo Domingo', descripcion: 'Jornada de vacunación PAI', color: '#10b981' },
-  { id: 'ev12', titulo: 'Comité técnico mensual', tipo: 'reunion', fecha: '2026-05-27', horaInicio: '14:00', horaFin: '16:00', profesional: 'Carlos Gómez', lugar: 'Oficina Secretaría de Salud', descripcion: 'Comité técnico con supervisores', color: '#6b7280' },
+  { id: 'ev12', titulo: 'Comité técnico mensual', tipo: 'reunion', fecha: '2026-05-27', horaInicio: '14:00', horaFin: '16:00', profesional: 'Sergio Marín', lugar: 'Oficina Secretaría de Salud', descripcion: 'Comité técnico con supervisores', color: '#6b7280' },
 ]
