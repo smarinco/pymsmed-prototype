@@ -7,11 +7,11 @@ export function AppShell() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden antialiased">
       <Sidebar open={sidebarOpen} onToggle={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex flex-1 flex-col overflow-hidden">
-        <Header onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
-        <main className="flex-1 overflow-y-auto p-6 bg-[var(--pyms-bg)]">
+        <Header />
+        <main className="flex-1 overflow-y-auto p-6">
           <Outlet />
         </main>
       </div>

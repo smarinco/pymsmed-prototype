@@ -8,10 +8,10 @@ interface EmptyStateProps {
 
 export function EmptyState({ message, action }: EmptyStateProps) {
   return (
-    <div className="flex flex-col items-center justify-center py-12 text-gray-400">
-      <Inbox size={48} strokeWidth={1} />
-      <p className="mt-3 text-sm">{message}</p>
-      {action && <div className="mt-4">{action}</div>}
+    <div className="py-8 text-center">
+      <Inbox size={36} strokeWidth={1.5} className="mx-auto text-gray-300" />
+      <p className="mt-2 text-[11px] text-gray-300">{message}</p>
+      {action && <div className="mt-3">{action}</div>}
     </div>
   )
 }

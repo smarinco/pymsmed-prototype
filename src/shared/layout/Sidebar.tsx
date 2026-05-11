@@ -44,11 +44,11 @@ const otherItems = [
   { to: '/salud-ambiental', icon: Leaf, label: 'Salud Ambiental' },
   { to: '/mapeo-activos', icon: Map, label: 'Mapeo de Activos' },
   { to: '/salas-amigas', icon: Baby, label: 'Salas Amigas' },
-  { to: '/actividades', icon: CalendarDays, label: 'Actividades Colectivas' },
   { to: '/formularios', icon: FileSpreadsheet, label: 'Formularios' },
+  { to: '/actividades', icon: CalendarDays, label: 'Actividades' },
   { to: '/canalizaciones', icon: ArrowRightLeft, label: 'Canalizaciones' },
-  { to: '/historial', icon: History, label: 'Historial Atenciones' },
-  { to: '/calendarizacion', icon: Calendar, label: 'Calendarización' },
+  { to: '/historial', icon: History, label: 'Historial' },
+  { to: '/calendarizacion', icon: Calendar, label: 'Calendario' },
   { to: '/reportes', icon: BarChart3, label: 'Reportes' },
   { to: '/solicitudes', icon: FileText, label: 'Solicitudes' },
   { to: '/administracion', icon: Settings, label: 'Administración' },
@@ -59,12 +59,12 @@ function NavItem({ to, icon: Icon, label, open: sidebarOpen }: { to: string; ico
     <NavLink
       to={to}
       className={({ isActive }) =>
-        `flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-          isActive ? 'bg-[var(--pyms-secondary)] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'
+        `flex items-center gap-2.5 px-3 py-2 rounded-lg text-[12px] transition-colors ${
+          isActive ? 'text-accent font-semibold' : 'text-secondary hover:text-accent'
         }`
       }
     >
-      <Icon size={18} />
+      <Icon size={16} />
       {sidebarOpen && <span>{label}</span>}
     </NavLink>
   )
@@ -77,23 +77,24 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
 
   return (
     <aside
-      className={`${open ? 'w-64' : 'w-16'} flex flex-col bg-[var(--pyms-sidebar)] text-white transition-all duration-200 ease-in-out`}
+      className={`${open ? 'w-[240px]' : 'w-[56px]'} flex flex-col bg-white border-r border-gray-100 transition-all duration-200`}
     >
       {/* Logo */}
-      <div className="flex h-16 items-center justify-between px-4 border-b border-white/10">
-        {open && (
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded bg-[var(--pyms-accent)] flex items-center justify-center text-sm font-bold">P</div>
-            <span className="font-semibold text-sm">PYMSMED</span>
+      <div className="flex h-[52px] items-center justify-between px-3 shrink-0">
+        {open ? (
+          <div className="flex items-center gap-2 cursor-pointer" onClick={onToggle}>
+            <div className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center text-[11px] font-bold text-white">P</div>
+            <span className="font-bold text-[13px] text-navy">PYMSMED</span>
           </div>
+        ) : (
+          <button onClick={onToggle} className="w-7 h-7 rounded-lg bg-accent flex items-center justify-center text-[11px] font-bold text-white mx-auto">
+            P
+          </button>
         )}
-        <button onClick={onToggle} className="p-1 rounded hover:bg-white/10 transition-colors" title={open ? 'Colapsar' : 'Expandir'}>
-          {open ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
-        </button>
       </div>
 
       {/* Nav */}
-      <nav className="flex-1 py-4 space-y-1 px-2 overflow-y-auto">
+      <nav className="flex-1 py-3 px-2 overflow-y-auto space-y-0.5">
         <NavItem to="/dashboard" icon={LayoutDashboard} label="Dashboard" open={open} />
 
         {/* Entornos group */}
@@ -101,29 +102,29 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
           <div>
             <button
               onClick={() => setEntornosOpen(!entornosOpen)}
-              className={`flex w-full items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
-                isEntornoActive ? 'text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white'
+              className={`flex w-full items-center justify-between px-3 py-2 rounded-lg text-[12px] transition-colors ${
+                isEntornoActive ? 'text-accent font-semibold' : 'text-secondary hover:text-accent'
               }`}
             >
-              <span className="flex items-center gap-3">
-                <MapPin size={18} />
+              <span className="flex items-center gap-2.5">
+                <MapPin size={16} />
                 <span>Entornos</span>
               </span>
-              <ChevronDown size={14} className={`transition-transform ${entornosOpen ? 'rotate-180' : ''}`} />
+              <ChevronDown size={12} className={`transition-transform duration-200 ${entornosOpen ? 'rotate-180' : ''}`} />
             </button>
             {entornosOpen && (
-              <div className="ml-4 pl-3 border-l border-white/10 space-y-0.5 mt-1">
+              <div className="ml-5 pl-3 border-l border-gray-100 space-y-0.5 mt-0.5">
                 {entornoItems.map((item) => (
                   <NavLink
                     key={item.to}
                     to={item.to}
                     className={({ isActive }) =>
-                      `flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-xs transition-colors ${
-                        isActive ? 'bg-[var(--pyms-secondary)] text-white' : 'text-gray-400 hover:bg-white/10 hover:text-white'
+                      `flex items-center gap-2 px-3 py-1.5 rounded-lg text-[11px] transition-colors ${
+                        isActive ? 'text-accent font-semibold' : 'text-gray-400 hover:text-accent'
                       }`
                     }
                   >
-                    <item.icon size={14} />
+                    <item.icon size={13} />
                     <span>{item.label}</span>
                   </NavLink>
                 ))}
@@ -141,7 +142,7 @@ export function Sidebar({ open, onToggle }: SidebarProps) {
 
       {/* Footer */}
       {open && (
-        <div className="p-4 border-t border-white/10 text-xs text-gray-500">
+        <div className="px-4 py-3 border-t border-gray-100 text-[9px] text-gray-300">
           PYMSMED v0.1 — Prototipo
         </div>
       )}

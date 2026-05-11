@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes } from 'react'
 
-const baseStyles = 'w-full rounded-lg border px-3 py-2 text-sm focus:border-[var(--pyms-secondary)] focus:outline-none focus:ring-1 focus:ring-[var(--pyms-secondary)]'
+const baseStyles = 'w-full border border-gray-200 rounded-lg px-3 py-2 text-[12px] text-navy placeholder:text-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors'
 
 interface FormFieldProps {
   label: string
@@ -12,12 +12,12 @@ interface FormFieldProps {
 export function FormField({ label, error, required, children }: FormFieldProps) {
   return (
     <div className="space-y-1">
-      <label className="block text-sm font-medium text-gray-700">
+      <label className="text-[11px] font-semibold text-navy block mb-1">
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
+        {required && <span className="text-accent ml-0.5">*</span>}
       </label>
       {children}
-      {error && <p className="text-xs text-red-600">{error}</p>}
+      {error && <p className="text-[10px] text-red-600">{error}</p>}
     </div>
   )
 }

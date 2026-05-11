@@ -39,7 +39,7 @@ export function DataTable<T>({
             placeholder={searchPlaceholder}
             value={search}
             onChange={(e) => handleSearch(e.target.value)}
-            className="w-full max-w-sm rounded-lg border px-4 py-2 text-sm focus:border-[var(--pyms-secondary)] focus:outline-none focus:ring-1 focus:ring-[var(--pyms-secondary)]"
+            className="w-full max-w-sm border border-gray-200 rounded-lg px-3 py-1.5 text-[12px] text-navy placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors"
           />
         </div>
       )}
@@ -47,25 +47,25 @@ export function DataTable<T>({
       {data.length === 0 ? (
         <EmptyState message={emptyMessage} />
       ) : (
-        <div className="overflow-x-auto rounded-lg border">
-          <table className="w-full text-sm">
+        <div className="overflow-x-auto bg-white rounded-xl border border-gray-200">
+          <table className="w-full">
             <thead>
-              <tr className="border-b bg-gray-50">
+              <tr className="bg-gray-50 border-b border-gray-100">
                 {columns.map((col) => (
                   <th
                     key={col.key}
-                    className="px-4 py-3 text-left text-xs font-semibold uppercase text-gray-500"
+                    className="px-4 py-3 text-left text-[10px] font-semibold text-gray-500 uppercase tracking-wide"
                   >
                     {col.header}
                   </th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y">
+            <tbody>
               {data.map((item, index) => (
-                <tr key={index} className="hover:bg-gray-50 transition-colors">
+                <tr key={index} className="border-b border-gray-50 hover:bg-orange-50/30 transition-colors">
                   {columns.map((col) => (
-                    <td key={col.key} className="px-4 py-3">
+                    <td key={col.key} className="px-4 py-3 text-[13px] text-navy">
                       {col.render(item)}
                     </td>
                   ))}
