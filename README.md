@@ -20,24 +20,30 @@ Aplicación React navegable y funcional para **validar flujos con el equipo de l
 - Los datos se almacenan en `localStorage` del navegador.
 - El botón **"Reset demo"** en la barra superior restaura los datos semilla.
 
-## Módulos implementados
+## Módulos implementados (18)
 
 | Módulo | Funcionalidad |
 |--------|--------------|
 | **Dashboard** | 8 KPIs en tiempo real, alertas dinámicas, accesos rápidos a todos los módulos |
 | **Entorno Comunitario** | CRUD completo: listar, crear, editar, inactivar con justificación, solicitar edición |
 | **Entorno Hogar** | Ficha hogar, integrantes (agregar/quitar), caracterización progresiva por 6 dimensiones, riesgos asociados a integrantes, seguimiento |
-| **Entorno Educativo** | CRUD genérico con campos: institución, sede, jornada, población |
-| **Entorno Laboral** | CRUD genérico con campos: empresa, NIT, sector económico, trabajadores |
-| **Entorno Institucional** | CRUD genérico con campos: tipo institución, capacidad, población atendida |
+| **Entorno Educativo** | CRUD genérico: institución, sede, jornada, población |
+| **Entorno Laboral** | CRUD genérico: empresa, NIT, sector económico, trabajadores |
+| **Entorno Institucional** | CRUD genérico: tipo institución, capacidad, población atendida |
 | **Visitas** | Listado general, crear desde entorno, detalle, agregar participantes, cerrar visita, solicitar reapertura |
 | **Participantes** | Listado general, buscar persona, crear nueva, agregar a visita con semáforo |
 | **Atenciones** | Crear atención (tipo, dimensión, resultado, riesgo, canalización), finalizar, semáforo rojo/amarillo/verde automático |
 | **Actividades Colectivas** | Programar, aprobar/rechazar (supervisor), registrar realización con participantes reales |
 | **Canalizaciones** | Bandeja general + bandeja EAPB, asignar cita, rechazar, reprogramar, marcar atendida, cerrar seguimiento |
-| **Reportes** | Tablero con KPIs, barras por tipo de entorno, semaforización, visitas por dimensión, canalizaciones por estado/prioridad, actividades |
+| **Salud Ambiental** | Caracterizaciones por 5 dimensiones (agua, residuos, vectores, aire, suelo), niveles de riesgo, seguimientos |
+| **Mapeo de Activos** | Catálogo de activos territoriales por 8 categorías, filtros, jornadas asociadas |
+| **Salas Amigas** | Empresas con barra de progreso (identificada → certificada), socialización de norma, seguimientos con cumplimiento |
+| **Formularios Dinámicos** | Catálogo, constructor de formularios (secciones + 7 tipos de campo), ejecución con renderizado dinámico, respuestas |
+| **Historial de Atenciones** | Buscador global por persona, timeline unificado con atenciones, visitas, canalizaciones y formularios |
+| **Calendarización** | Vista calendario mensual, eventos por color/tipo, filtro por profesional, panel lateral de detalle, crear evento |
+| **Reportes** | Tablero con KPIs, barras por tipo de entorno, semaforización, visitas por dimensión, canalizaciones por prioridad, actividades |
 | **Solicitudes** | Filtros por estado, búsqueda, aprobar/rechazar, detalle completo |
-| **Administración** | Tabs: Contratos (tarjetas con presupuesto), Solicitudes, Auditoría (timeline con iconos) |
+| **Administración** | Tabs: Contratos (tarjetas con presupuesto COP), Solicitudes, Auditoría (timeline con iconos) |
 
 ## Flujo guiado de demostración
 
@@ -66,10 +72,30 @@ Aplicación React navegable y funcional para **validar flujos con el equipo de l
 - Atención con riesgo genera canalización → EAPB asigna cita → Atender → Cerrar.
 - Probar con usuario **Laura Vélez (EAPB)** para ver bandeja EAPB.
 
-### 7. Reportes
-- Sidebar → **Reportes** → Tablero con indicadores de todos los módulos.
+### 7. Salud Ambiental
+- Nueva caracterización → Evaluar 5 dimensiones → Nivel de riesgo con indicador visual.
 
-### 8. Administración
+### 8. Mapeo de Activos
+- Catálogo de activos → Filtrar por categoría → Ver jornadas asociadas.
+
+### 9. Salas Amigas
+- Listado de empresas → Barra de progreso → Socializaciones → Seguimientos con cumplimiento.
+
+### 10. Formularios Dinámicos
+- **Crear formulario**: diseñar secciones y campos → Publicar → Ejecutar con renderizado dinámico.
+- **Ejecutar formulario**: llenar campos generados desde la config → Guardar respuestas.
+
+### 11. Historial de Atenciones
+- Buscar persona por documento o nombre → Timeline unificado con todos sus registros.
+- Probar: buscar "García" o "1017234567".
+
+### 12. Calendarización
+- Vista mensual → Click en día → Ver eventos → Filtrar por profesional → Crear evento.
+
+### 13. Reportes
+- Sidebar → **Reportes** → Tablero con indicadores calculados en tiempo real.
+
+### 14. Administración
 - Sidebar → **Administración** → Contratos | Solicitudes | Auditoría.
 
 ## Usuarios de prueba
@@ -89,6 +115,11 @@ Aplicación React navegable y funcional para **validar flujos con el equipo de l
 - 8 personas mock
 - 5 visitas, 9 participantes, 4 atenciones
 - 5 actividades colectivas, 6 canalizaciones
+- 3 caracterizaciones ambientales, 1 seguimiento ambiental
+- 5 activos territoriales
+- 4 empresas sala amiga, 3 socializaciones, 2 seguimientos sala
+- 3 formularios dinámicos, 2 respuestas
+- 12 eventos de calendario
 - 3 solicitudes, 4 contratos, 12 registros de auditoría
 
 ## Arquitectura
@@ -97,14 +128,14 @@ Aplicación React navegable y funcional para **validar flujos con el equipo de l
 src/
   app/                                  # Router principal
   shared/
-    components/                         # Button, Card, Badge, DataTable, Modal, etc.
+    components/                         # Button, Card, Badge, DataTable, Modal, etc. (11)
     context/                            # AuthContext (usuario/rol mock)
     layout/                             # AppShell, Sidebar (colapsable con submenú), Header
     storage/                            # Repository genérico + seed manager
-    types/                              # Tipos de dominio TypeScript
-    mock/                               # Datos semilla
+    types/                              # Tipos de dominio TypeScript (50+ interfaces)
+    mock/                               # Datos semilla (~800 líneas)
   modules/
-    dashboard/                          # Dashboard con KPIs dinámicos
+    dashboard/                          # Dashboard con KPIs dinámicos y alertas
     entornos/comunitario/               # CRUD completo entorno comunitario
     entornos/generic/                   # Componente genérico para educativo/laboral/institucional
     hogares/                            # Hogar + integrantes + caracterización + seguimiento
@@ -113,24 +144,28 @@ src/
     atenciones/                         # Atención básica + semaforización
     actividades/                        # Actividades colectivas + aprobación
     canalizaciones/                     # Bandeja general + EAPB + gestión
+    saludAmbiental/                     # Caracterizaciones ambientales + seguimientos
+    activos/                            # Mapeo de activos territoriales
+    salasAmigas/                        # Empresas + socialización + seguimientos
+    formularios/                        # Catálogo + constructor + ejecución dinámica
+    historial/                          # Buscador global + timeline unificado
+    calendarizacion/                    # Vista calendario mensual + eventos
     reportes/                           # Tablero con indicadores agregados
     solicitudes/                        # Gestión de solicitudes
     administracion/                     # Contratos + solicitudes + auditoría
 ```
 
-### Patrón de persistencia
+### Patrones de arquitectura
 
+**Persistencia intercambiable:**
 ```
 LocalStorageRepository (actual) → ApiRepository (futuro)
 ```
-
 Interface `Repository<T>` con `list()`, `getById()`, `create()`, `update()`, `delete()`.
-Para migrar a API REST solo se implementa `ApiRepository`.
 
-### Patrón genérico de entornos
+**Entornos genéricos:** `entorno-config.ts` define campos por tipo. 3 páginas genéricas reciben la config como prop. Para agregar un nuevo tipo de entorno solo se agrega una entrada en la config.
 
-`entorno-config.ts` define campos por tipo. 3 páginas genéricas reciben la config como prop.
-Para agregar un nuevo tipo de entorno solo se agrega una entrada en la config.
+**Formularios dinámicos:** La estructura JSON del formulario genera la UI automáticamente. El mismo patrón se usará con el módulo transversal de SIISMED.
 
 ## Stack técnico
 
@@ -140,6 +175,13 @@ Para agregar un nuevo tipo de entorno solo se agrega una entrada en la config.
 - React Router 7
 - Lucide React (iconos)
 - localStorage para persistencia
+
+## Preparación para producción
+
+Los siguientes archivos documentan la migración futura:
+
+- `src/shared/storage/api-repository.ts` — Clase `ApiRepository` vacía con 20+ endpoints documentados
+- `docs/decisiones-abiertas.md` — Preguntas TODO-SIISMED, TODO-BACKEND, TODO-API
 
 ## Checklist de validación con usuarios
 
@@ -153,5 +195,8 @@ Para agregar un nuevo tipo de entorno solo se agrega una entrada en la config.
 - [ ] ¿El flujo de canalizaciones es claro para EAPB?
 - [ ] ¿La caracterización progresiva del hogar funciona bien?
 - [ ] ¿Los reportes muestran la información necesaria?
+- [ ] ¿El constructor de formularios es intuitivo?
+- [ ] ¿El calendario es útil para la operación?
+- [ ] ¿El historial de atenciones facilita el seguimiento?
 - [ ] ¿Falta algún campo o acción?
 - [ ] ¿La terminología es correcta?
