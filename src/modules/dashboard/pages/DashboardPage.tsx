@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   MapPin, Home, ClipboardList, Users, FileText, ArrowRightLeft,
-  CalendarDays, BarChart3, AlertTriangle, Activity,
+  CalendarDays, BarChart3, Activity,
 } from 'lucide-react'
 import { useAuth } from '@/shared/context/AuthContext'
 import { STORAGE_KEYS } from '@/shared/storage/seed-manager'
@@ -84,9 +84,6 @@ export function DashboardPage() {
         <h2 className="text-2xl font-bold text-gray-800">
           Bienvenido, {usuario.nombre}
         </h2>
-        <p className="text-sm text-gray-500 mt-1">
-          Panel de control PYMSMED — {usuario.contrato.proyecto} • Contrato {usuario.contrato.numero}
-        </p>
       </div>
 
       {/* Alertas */}
@@ -121,53 +118,26 @@ export function DashboardPage() {
         ))}
       </div>
 
-      {/* Quick actions + info */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 rounded-lg border bg-white p-5 shadow-sm">
-          <h3 className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
-            <Activity size={16} />
-            Accesos rápidos
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {quickActions.map((action) => (
-              <button
-                key={action.to}
-                onClick={() => navigate(action.to)}
-                className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-left hover:bg-gray-50 border transition-colors"
-              >
-                <span className={action.iconColor}>{action.icon}</span>
-                <div>
-                  <div className="font-medium">{action.label}</div>
-                  <div className="text-xs text-gray-500">{action.desc}</div>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="rounded-lg border bg-white p-5 shadow-sm">
-          <h3 className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
-            <AlertTriangle size={16} />
-            Acerca del prototipo
-          </h3>
-          <div className="space-y-3 text-sm text-gray-600">
-            <div className="flex gap-2 items-start">
-              <span className="mt-0.5 w-2 h-2 rounded-full bg-blue-400 shrink-0" />
-              <span><strong>Prototipo funcional</strong> para validación de flujos con la Secretaría de Salud.</span>
-            </div>
-            <div className="flex gap-2 items-start">
-              <span className="mt-0.5 w-2 h-2 rounded-full bg-blue-400 shrink-0" />
-              <span>Datos en <strong>localStorage</strong>. Use "Reset demo" para restaurar.</span>
-            </div>
-            <div className="flex gap-2 items-start">
-              <span className="mt-0.5 w-2 h-2 rounded-full bg-blue-400 shrink-0" />
-              <span>Cambie de <strong>usuario/rol</strong> en la barra superior.</span>
-            </div>
-            <div className="flex gap-2 items-start">
-              <span className="mt-0.5 w-2 h-2 rounded-full bg-blue-400 shrink-0" />
-              <span>No requiere backend, internet ni login real.</span>
-            </div>
-          </div>
+      {/* Quick actions */}
+      <div className="rounded-lg border bg-white p-5 shadow-sm">
+        <h3 className="text-sm font-semibold text-gray-700 mb-4 flex items-center gap-2">
+          <Activity size={16} />
+          Accesos rápidos
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+          {quickActions.map((action) => (
+            <button
+              key={action.to}
+              onClick={() => navigate(action.to)}
+              className="flex items-center gap-3 rounded-lg px-4 py-3 text-sm text-left hover:bg-gray-50 border transition-colors"
+            >
+              <span className={action.iconColor}>{action.icon}</span>
+              <div>
+                <div className="font-medium">{action.label}</div>
+                <div className="text-xs text-gray-500">{action.desc}</div>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
     </div>
